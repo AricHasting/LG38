@@ -7,5 +7,6 @@ function love.conf(t)
     t.window.icon = nil                 -- Filepath to an image to use as the window's icon (string)
     t.window.width = 800                -- The window width (number)
     t.window.height = 600               -- The window height (number)
+    t.window.msaa = 8                   -- The number of samples to use with multi-sampled antialiasing (number)
     io.stdout:setvbuf("no")             -- By default the console in Sublime Text will not display any output, such as print() calls, until the LOVE application has been closed.
 end
