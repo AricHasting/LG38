@@ -13,6 +13,7 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = gameWidth+220,
       y = gameHeight-50
+      satellites = {}
     },
 
     mercury = {
@@ -22,6 +23,7 @@ function baseValues:loadPlanets(arg)
       x = 1600,
       y = 900,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     venus = {
@@ -31,6 +33,7 @@ function baseValues:loadPlanets(arg)
       x = 1641,
       y = 525,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     earth = {
@@ -40,6 +43,7 @@ function baseValues:loadPlanets(arg)
       x = 1350,
       y = 781,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     mars = {
@@ -49,6 +53,7 @@ function baseValues:loadPlanets(arg)
       x = 1380,
       y = 461,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     jupiter = {
@@ -58,6 +63,7 @@ function baseValues:loadPlanets(arg)
       x = 965,
       y = 797,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     saturn = {
@@ -67,6 +73,7 @@ function baseValues:loadPlanets(arg)
       x = 852,
       y = 380,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     uranus = {
@@ -76,6 +83,7 @@ function baseValues:loadPlanets(arg)
       x = 484,
       y = 764,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     neptune = {
@@ -85,6 +93,7 @@ function baseValues:loadPlanets(arg)
       x = 411,
       y = 318,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     },
 
     pluto = {
@@ -94,6 +103,7 @@ function baseValues:loadPlanets(arg)
       x = 171,
       y = 491,
       selfOrbit = 0 -- placeholder
+      satellites = {}
     }
   }
 
