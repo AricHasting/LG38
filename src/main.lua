@@ -3,6 +3,7 @@ require "baseValues"
 require "debugging"
 require "angle_utils"
 require "satellites"
+require "enemies"
 push = require "lib.push"
 
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!
@@ -15,6 +16,7 @@ gamestate = "game" -- state switcher
 
 function love.load(args)
 	game:load(args)
+	enemies:load(args)
 end
 
 
@@ -22,6 +24,8 @@ function love.update(dt)
 	-- only update if in game state
 	if gamestate == "game" then
 		game:update(dt)
+		enemies:update(dt)
+		satellites:update(dt)
 	end
 
 	-- debugging
@@ -37,6 +41,8 @@ function love.draw()
 		-- only draw if in game or pause state
 		if gamestate == "game" or gamestate == "pause" then
 			game:draw()
+			enemies:draw()
+			satellites:draw()
 		end
 
 		-- debugging
@@ -56,5 +62,8 @@ end
 function love.keypressed(key, scancode, isrepeat)
 	if debug then
 		debugging:keypressed(key, scancode, isrepeat)
+	end
+	if key == "tab" then
+		debug = not debug
 	end
 end

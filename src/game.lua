@@ -6,25 +6,31 @@ function game:load(args)
   planetsheet = love.graphics.newImage("assets/planetsheet.png") -- load spriteshet into memory
   img = love.graphics.newImage("assets/satellite.png")
   planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
-
+  love.graphics.setNewFont(20)
   baseValues.loadPlanets(args) -- call after all resources
 
   local newSat = {dir = 0, x = 100, y = 100}
   table.insert(planet.jupiter.assoc_sats, newSat)
 end
 
--- only put base values here. Load resources in game:load()
-function game:loadBaseValues(args)
-
-end
-
 function game:update(dt)
-  satellites:update(dt)
+
+  -- bob planets slightly
+  for i,object in pairs(planet) do
+    if object ~= planet.sun then
+      if object.oy+object.y < object.y then
+        object.yvel = object.yvel + 100*dt
+      elseif object.oy+object.y > object.y then
+        object.yvel = object.yvel - 100*dt
+      end
+      object.oy = object.oy + object.yvel*dt
+    end
+  end
 end
 
 function game:draw()
   lg.push("all")
-    lg.setColor(30,30,40)
+    lg.setColor(28, 28, 28)
     lg.rectangle("fill", 0, 0, gameWidth, gameHeight)
     -- draw orbits for each planet
     -- table iterator. Goes through all objects
@@ -46,8 +52,6 @@ function game:draw()
   -- draw all the planets. Nothing interesting here. Just usng the coordinates and stuff from the planets table. Offset is 1024/2 (512). Offset uses the raw (unscaled) dimensions
   -- iterate through planet table and draw all planets
   for i,object in pairs(planet) do
-    lg.draw(planetsheet, object.quad, object.x, object.y, object.r, object.scale, object.scale, 1024/2, 1024/2) -- draw planets
+    lg.draw(planetsheet, object.quad, object.x, object.y, object.r, object.scale, object.scale, 1024/2, 1024/2+object.oy) -- draw planets
   end
-
-  satellites:draw()
 end
