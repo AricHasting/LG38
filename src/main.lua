@@ -1,6 +1,8 @@
 require "game"
 require "baseValues"
 require "debugging"
+require "angle_utils"
+require "satellites"
 push = require "lib.push"
 
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!

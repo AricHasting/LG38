@@ -12,8 +12,8 @@ function baseValues:loadPlanets(arg)
       scale = 0.7,
       r = 0,
       x = gameWidth+220,
-      y = gameHeight-50
-      satellites = {}
+      y = gameHeight-50,
+      assoc_sats = {}
     },
 
     mercury = {
@@ -22,8 +22,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 1600,
       y = 900,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     venus = {
@@ -32,8 +32,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 1641,
       y = 525,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     earth = {
@@ -42,8 +42,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 1350,
       y = 781,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     mars = {
@@ -52,8 +52,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 1380,
       y = 461,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     jupiter = {
@@ -62,8 +62,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 965,
       y = 797,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     saturn = {
@@ -72,8 +72,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 852,
       y = 380,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     uranus = {
@@ -82,8 +82,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 484,
       y = 764,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     neptune = {
@@ -92,8 +92,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 411,
       y = 318,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     },
 
     pluto = {
@@ -102,8 +102,8 @@ function baseValues:loadPlanets(arg)
       r = 0,
       x = 171,
       y = 491,
-      selfOrbit = 0 -- placeholder
-      satellites = {}
+      selfOrbit = 0, -- placeholder
+      assoc_sats = {}
     }
   }
 

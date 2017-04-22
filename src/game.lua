@@ -4,9 +4,13 @@ local lg = love.graphics -- bind LG
 
 function game:load(args)
   planetsheet = love.graphics.newImage("assets/planetsheet.png") -- load spriteshet into memory
+  img = love.graphics.newImage("assets/satellite.png")
   planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
 
   baseValues.loadPlanets(args) -- call after all resources
+
+  local newSat = {dir = 0, x = 100, y = 100}
+  table.insert(planet.jupiter.assoc_sats, newSat)
 end
 
 -- only put base values here. Load resources in game:load()
@@ -15,7 +19,7 @@ function game:loadBaseValues(args)
 end
 
 function game:update(dt)
-
+  satellites:update(dt)
 end
 
 function game:draw()
@@ -44,4 +48,6 @@ function game:draw()
   for i,object in pairs(planet) do
     lg.draw(planetsheet, object.quad, object.x, object.y, object.r, object.scale, object.scale, 1024/2, 1024/2) -- draw planets
   end
+
+  satellites:draw()
 end
