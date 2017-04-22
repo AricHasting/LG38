@@ -19,7 +19,7 @@ function satellites:draw()
 	for i,object in pairs(planet) do
 		-- iterate through the satellites contained by each planet and draw it facing its rotation axis
     	for j, sat in pairs(object.assoc_sats) do
-      		lg.draw(img, sat.x, sat.y, sat.dir + math.rad(90), 1, 1, 25, 25)
+      		lg.draw(img, sat.x, sat.y, sat.dir - math.rad(90), 0.3, 0.3, 255/2, 175)
     	end
     end
 end
