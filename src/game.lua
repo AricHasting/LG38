@@ -4,13 +4,16 @@ local lg = love.graphics -- bind LG
 
 function game:load(args)
   planetsheet = love.graphics.newImage("assets/planetsheet.png") -- load spriteshet into memory
-  satellitesprite = love.graphics.newImage("assets/satellite.png") -- load satellite sprite into memory
+  planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
   devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
+  sunGlow = lg.newImage("assets/glow.png")
+  viggente = lg.newImage("assets/viggente.png")
+  ringsheet = lg.newImage("assets/ringsheet.png")
   score = 0
   selectedPlanet = nil
-  planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
+
   love.graphics.setNewFont(20)
-  baseValues.loadPlanets(args) -- call after all resources
+  baseValues:loadPlanets(args) -- call after all resources
 end
 
 function game:update(dt)
@@ -34,6 +37,10 @@ function game:draw()
   lg.push("all")
     lg.setColor(28, 28, 28)
     lg.rectangle("fill", 0, 0, gameWidth, gameHeight)
+    lg.setColor(255,255,255,255)
+    lg.draw(viggente, 0, 0, 0, 1, 1)
+    lg.setColor(249, 158, 2, 50)
+    lg.draw(sunGlow, planet.sun.x, planet.sun.y, 0, 1.5, 1.5, 1920/2, 1920/2)
     -- draw orbits for each planet
     -- table iterator. Goes through all objects
     for i,object in pairs(planet) do
@@ -55,5 +62,13 @@ function game:draw()
   -- iterate through planet table and draw all planets
   for i,object in pairs(planet) do
     lg.draw(planetsheet, object.quad, object.x, object.y, object.r, object.scale, object.scale, 1024/2, 1024/2+object.oy) -- draw planets
+
+    if object.ring then
+      if object == planet.saturn then
+        lg.draw(ringsheet, ring.saturn.quad, object.x, object.y-(object.oy*object.scale), math.rad(-15+object.yvel/60), object.scale, object.scale, 1000, 350/2-80)
+      elseif object == planet.uranus then
+        lg.draw(ringsheet, ring.uranus.quad, object.x, object.y-(object.oy*object.scale), math.rad(20+object.yvel/70), object.scale, object.scale, 1000, 351/2-80)
+      end
+    end
   end
 end

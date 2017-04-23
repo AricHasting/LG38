@@ -19,7 +19,8 @@ function baseValues:loadPlanets(arg)
       gravity = 2000,
 	    targetRange = 0,
       yvel = 0,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     mercury = {
@@ -35,7 +36,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = -80,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     venus = {
@@ -51,7 +53,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = -100,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     earth = {
@@ -67,7 +70,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = 100,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     mars = {
@@ -83,7 +87,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = -95,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     jupiter = {
@@ -99,7 +104,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = 80,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     saturn = {
@@ -115,7 +121,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = -90,
-      oy = 0
+      oy = 0,
+      ring = true
     },
 
     uranus = {
@@ -131,7 +138,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = 85,
-      oy = 0
+      oy = 0,
+      ring = true
     },
 
     neptune = {
@@ -147,7 +155,8 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = 95,
-      oy = 0
+      oy = 0,
+      ring = false
     },
 
     pluto = {
@@ -163,7 +172,19 @@ function baseValues:loadPlanets(arg)
       targetRange = 0,
       selfOrbit = 0,
       yvel = -80,
-      oy = 0
+      oy = 0,
+      ring = false
+    }
+  }
+  ring = {
+    saturn = {
+      quad = lg.newQuad(0, 0, 2000, 350, ringsheet:getDimensions())
+    },
+    uranus = {
+      quad = lg.newQuad(0, 351, 2000, 351, ringsheet:getDimensions())
+    },
+    standard = {
+      quad = lg.newQuad(0, 710, 2000, 350, ringsheet:getDimensions())
     }
   }
 

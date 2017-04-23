@@ -1,6 +1,11 @@
 satellites = {}
 
 lg = love.graphics
+function satellites:load(args)
+	satellitesprite = love.graphics.newImage("assets/satellite.png") -- load satellite sprite into memory
+	local newSat = {dir = 0, x = 100, y = 100, speed = 10}
+	table.insert(planet.jupiter.assoc_sats, newSat)
+end
 
 function satellites:update(dt)
 	-- update each satellite's position

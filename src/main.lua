@@ -19,6 +19,7 @@ gamestate = "game" -- state switcher
 function love.load(args)
 	game:load(args)
 	enemies:load(args)
+	satellites:load(args)
 end
 
 
