@@ -5,15 +5,6 @@ function enemies:load(args)
   enemysheet = lg.newImage("assets/enemysheet.png") -- load assets into memory
   baseValues:loadEnemies(args) -- call after all resources
 
-  local newEnemy = {
-    quad = enemy.normal.quad,
-    x = 0,
-    y = 300,
-    r = 0,
-    speed = 200,
-    scale = enemy.normal.scale
-  }
-  table.insert(activeEnemies, newEnemy)
 end
 
 function enemies:update(dt)
@@ -24,12 +15,18 @@ function enemies:update(dt)
     objEnemy.x = objEnemy.x + math.sin(math.rad(objEnemy.r))*dt*objEnemy.speed
 		objEnemy.y = objEnemy.y - math.cos(math.rad(objEnemy.r))*dt*objEnemy.speed
 
-
-    -- check if enemy is in orbit of any planet
-    --[[for m,objPlanet in pairs(planet) do
-        if math.sqrt((objEnemy.x-objPlanet.x)^2 + (objEnemy.y-objPlanet.y)^2) <= objPlanet.gravity+512*objEnemy.scale then
-        end
-    end]]
+    -- top path
+    if objEnemy.path == enemyPath.top then
+      self:checkPoints(enemyPath.top, objEnemy)
+    --center path
+    elseif objEnemy.path == enemyPath.center then
+      self:checkPoints(enemyPath.center, objEnemy)
+    --bottom path
+    elseif objEnemy.path == enemyPath.bottom then
+      self:checkPoints(enemyPath.bottom, objEnemy)
+    end
+    -- this path affects everyone
+    self:checkPoints(enemyPath.all, objEnemy)
   end
 
   -- manual iterator. Removing stuff from a normal one will cause everything to spaz. We dont want that.
@@ -43,6 +40,40 @@ function enemies:update(dt)
       i = i+1 -- if we don't remove we iterate
     end
   end
+end
+
+function enemies:checkPoints(path, objEnemy)
+  for n,objSwitcher in pairs(path) do
+    -- go through all the path points and check if we're touching it. If yes, set our angle to the one in the point
+    if angle_utils:pointdist(objEnemy.x, objEnemy.y, objSwitcher.x, objSwitcher.y) <= objSwitcher.radius then
+      objEnemy.r = objSwitcher.r
+    end
+  end
+end
+
+function enemies:spawn(type, path)
+  local newEnemy = {
+    quad = type.quad,
+    x = 0,
+    y = 0, -- TOP 250; CENTER 590; BOTTOM 1000
+    r = 0, -- TOP 110; CENTER 70; BOTTOM 50
+    speed = type.speed,
+    scale = type.scale,
+    path = path
+  }
+  -- change spawn locations based on height
+  if path == enemyPath.top then
+    newEnemy.y = 250
+    newEnemy.r = 110
+  elseif path == enemyPath.center then
+    newEnemy.y = 590
+    newEnemy.r = 70
+  elseif path == enemyPath.bottom then
+    newEnemy.y = 1000
+    newEnemy.r = 50
+  end
+  -- push enemy to table
+  table.insert(activeEnemies, newEnemy)
 end
 
 function enemies:draw()

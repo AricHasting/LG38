@@ -27,11 +27,10 @@ function love.load(args)
 	music1:setLooping(true)
 	music2:setLooping(true)
 
-	-- adjust music volume to reasonable level
-	music1:setVolume(.1)
+	musicSelected = music1
 
-	-- play the first song, looping, at 0.1 volume
-	love.audio.play(music1)
+	musicSelected:setVolume(0.1)
+	love.audio.play(musicSelected)
 
 	baseValues:loadGame(args)
 	game:load(args)
@@ -49,8 +48,22 @@ function love.update(dt)
 		enemies:update(dt)
 		satellites:update(dt)
 		moons:update(dt)
+		-- do this check to avoid calling it all the time
+		-- if gamestate game then normal speed and volume
+		if musicSelected:getPitch() ~= 1 then
+			musicSelected:setPitch(1)
+			musicSelected:setVolume(0.1)
+		end
 	end
 
+	if gamestate == "pause" then
+		-- do this check to avoid calling it all the time
+		-- if gamestate game then low speed and volume
+		if musicSelected:getPitch() ~= 0.5 then
+			musicSelected:setPitch(0.5)
+			musicSelected:setVolume(0.02)
+		end
+	end
 	-- debugging
 	if debug then
 		debugging:update(dt)
