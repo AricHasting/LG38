@@ -9,6 +9,7 @@ function game:load(args)
   sunGlow = lg.newImage("assets/glow.png")
   viggente = lg.newImage("assets/viggente.png")
   ringsheet = lg.newImage("assets/ringsheet.png")
+  mooncolony = lg.newImage("assets/moon_colony_overlay.png")
   score = 0
   selectedPlanet = nil
 

@@ -23,7 +23,7 @@ end
 
 function resources:addMoon(moon_planet)
 	-- create a new moon at the specified planet and decrement the player's credits
-	newMoon = {x = 0, y = 0, dir = math.random(0, math.pi * 2), type = "none", speed = -10}
+	newMoon = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "none", speed = -10}
 	table.insert(moon_planet.assoc_moons, newMoon)
 	resources:withdraw(store.price_moon)
 end
