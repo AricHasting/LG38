@@ -20,7 +20,8 @@ function baseValues:loadPlanets(arg)
 	    targetRange = 0,
       yvel = 0,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     mercury = {
@@ -37,7 +38,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = -80,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     venus = {
@@ -54,7 +56,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = -100,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     earth = {
@@ -71,7 +74,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = 100,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     mars = {
@@ -88,7 +92,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = -95,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     jupiter = {
@@ -105,7 +110,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = 80,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     saturn = {
@@ -122,7 +128,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = -90,
       oy = 0,
-      ring = true
+      ring = true,
+      color = {}
     },
 
     uranus = {
@@ -139,7 +146,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = 85,
       oy = 0,
-      ring = true
+      ring = true,
+      color = {}
     },
 
     neptune = {
@@ -156,7 +164,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = 95,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     },
 
     pluto = {
@@ -173,7 +182,8 @@ function baseValues:loadPlanets(arg)
       selfOrbit = 0,
       yvel = -80,
       oy = 0,
-      ring = false
+      ring = false,
+      color = {}
     }
   }
   ring = {
@@ -183,7 +193,7 @@ function baseValues:loadPlanets(arg)
     uranus = {
       quad = lg.newQuad(0, 351, 2000, 351, ringsheet:getDimensions())
     },
-    standard = {
+    normal = {
       quad = lg.newQuad(0, 710, 2000, 350, ringsheet:getDimensions())
     }
   }
@@ -196,6 +206,12 @@ function baseValues:loadPlanets(arg)
       object.selfOrbit = 1024*object.scale*1.2
       object.gravity = 1024*object.scale*1.4
 	    object.targetRange = 1024*object.scale*1.4
+      object.ring = true
+      if object.ring  then
+        local x, y, w, h = object.quad:getViewport( )
+        local r, g, b, a = planetsheetData:getPixel( x+w/2, y+h/2 )
+        object.color = {r-20, g-20, b-20, a}
+      end
     end
   end
 end

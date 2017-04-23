@@ -30,6 +30,7 @@ function love.update(dt)
 		enemies:update(dt)
 		satellites:update(dt)
 		moons:update(dt)
+		uimanager:update(dt)
 	end
 
 	-- debugging
