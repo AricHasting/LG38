@@ -1,5 +1,14 @@
 uimanager = {}
 
+lg = love.graphics
+
+function uimanager:load( args )
+	earthIcon = lg.newImage("assets/earth_cutout.png")
+	creditIcon = lg.newImage("assets/credits.png")
+	earthIcon:setFilter("linear", "linear", 16) -- anisoftropy
+	creditIcon:setFilter("linear", "linear", 16)
+end
+
 function uimanager:mousepressed(x, y, button, istouch)
 	local x, y = push:toGame(x, y) -- transform coords to game from letterbox value
 	-- only be able to select while game running (not paused)
@@ -37,4 +46,15 @@ function uimanager:keypressed(key, scancode, isrepeat)
 			gamestate = "pause"
 		end
 	end
+end
+
+function uimanager:draw()
+	lg.setColor(73, 104, 174, 255)
+	lg.polygon("fill", 1505, 0, 1505, 63, 1546, 104, 1919, 104, 1919, 0)
+	lg.setColor(255, 255, 255, 255)
+	lg.draw(earthIcon, 1587, 52, 0, 0.05, 0.05, 1025 / 2, 1025 / 2)
+	lg.draw(creditIcon, 1761, 52, 0, 0.05, 0.05, 1025 / 2, 1025 / 2)
+	lg.setFont(devgothicTopRight)
+	lg.print(planet.earth.health .. "%", 1629, 26)
+	lg.print(store.credits, 1775, 26)
 end

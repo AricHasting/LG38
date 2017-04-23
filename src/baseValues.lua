@@ -67,13 +67,14 @@ function baseValues:loadPlanets(args)
 
     earth = {
       name = "Earth",
+      health = 100,
       quad = lg.newQuad(0, 1025, 1024, 1024, planetsheet:getDimensions()),
       scale = 0.078,
       r = 0,
       x = 1350,
       y = 781,
       assoc_sats = {},
-      assoc_moons = {},
+      assoc_moons = {luna = {x = 0, y = 0, dir = math.random(0, math.pi * 2), type = "none", speed = -10}},
       gravity = 0,
       targetRange = 0,
       selfOrbit = 0,
@@ -115,7 +116,7 @@ function baseValues:loadPlanets(args)
       selfOrbit = 0,
       yvel = 80,
       oy = 0,
-      ring = false,
+      ring = true,
       color = {}
     },
 
@@ -169,7 +170,7 @@ function baseValues:loadPlanets(args)
       selfOrbit = 0,
       yvel = 95,
       oy = 0,
-      ring = false,
+      ring = true,
       color = {}
     },
 
@@ -263,5 +264,17 @@ function baseValues:loadEnemies(args)
     top = {},
     center = {},
     bottom = {}
+  }
+end
+
+function baseValues:loadStore(args)
+  store = {
+    credits = 100,
+    price_laser = 10,
+    price_moon = 10,
+    price_colony = 10,
+    price_lidar = 10,
+    price_shock = 10,
+    price_ring = 10
   }
 end

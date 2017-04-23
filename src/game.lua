@@ -12,6 +12,7 @@ function game:load(args)
   score = 0
   selectedPlanet = nil
 
+  baseValues:loadStore(args)
   baseValues:loadPlanets(args) -- call after all resources
 end
 

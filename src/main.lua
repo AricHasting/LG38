@@ -17,12 +17,14 @@ push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen =
 
 function love.load(args)
 	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
+	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 50)
 
 	baseValues:loadGame(args)
 	game:load(args)
 	enemies:load(args)
 	satellites:load(args)
 	menu:load(args)
+	uimanager:load(args)
 end
 
 
@@ -51,6 +53,7 @@ function love.draw()
 			enemies:draw()
 			satellites:draw()
 			moons:draw()
+			uimanager:draw()
 		end
 		if gamestate == "pause" then
 			menu:drawPause()

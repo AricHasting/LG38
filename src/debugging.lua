@@ -29,6 +29,6 @@ function debugging:draw()
   lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 10)
   lg.print("Press Q to quit", 10, 40)
   if selectedPlanet ~= nil then
-    lg.print(selectedPlanet.name, 10, 50)
+    lg.print(selectedPlanet.name, 10, 70)
   end
 end
