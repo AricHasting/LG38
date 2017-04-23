@@ -15,7 +15,6 @@ function baseValues:loadPlanets(arg)
       y = gameHeight-50,
       assoc_sats = {},
       gravity = 2000,
-      pull = 5,
       yvel = 0,
       oy = 0
     },
@@ -28,7 +27,6 @@ function baseValues:loadPlanets(arg)
       y = 900,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = -80,
       oy = 0
@@ -42,7 +40,6 @@ function baseValues:loadPlanets(arg)
       y = 525,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = -100,
       oy = 0
@@ -56,7 +53,6 @@ function baseValues:loadPlanets(arg)
       y = 781,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = 100,
       oy = 0
@@ -66,11 +62,10 @@ function baseValues:loadPlanets(arg)
       quad = lg.newQuad(1025, 1025, 1024, 1024, planetsheet:getDimensions()),
       scale = 0.065,
       r = 0,
-      x = 1380,
-      y = 461,
+      x = 1330,
+      y = 424,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = -95,
       oy = 0
@@ -84,7 +79,6 @@ function baseValues:loadPlanets(arg)
       y = 797,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = 80,
       oy = 0
@@ -98,7 +92,6 @@ function baseValues:loadPlanets(arg)
       y = 380,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = -90,
       oy = 0
@@ -112,7 +105,6 @@ function baseValues:loadPlanets(arg)
       y = 764,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = 85,
       oy = 0
@@ -126,7 +118,6 @@ function baseValues:loadPlanets(arg)
       y = 318,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = 95,
       oy = 0
@@ -140,7 +131,6 @@ function baseValues:loadPlanets(arg)
       y = 491,
       assoc_sats = {},
       gravity = 0,
-      pull = 0,
       selfOrbit = 0,
       yvel = -80,
       oy = 0
@@ -153,8 +143,7 @@ function baseValues:loadPlanets(arg)
   for i,object in pairs(planet) do
     if object ~= planet.sun then
       object.selfOrbit = 1024*object.scale*1.2
-      object.gravity = 1024*object.scale*1.7
-      object.pull = object.scale*2000
+      object.gravity = 1024*object.scale*1.4
     end
   end
 end

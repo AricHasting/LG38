@@ -16,8 +16,10 @@ end
 function game:update(dt)
 
   -- bob planets slightly
+  -- iterate through all planets
   for i,object in pairs(planet) do
     if object ~= planet.sun then
+      -- move velocity up and down
       if object.oy+object.y < object.y then
         object.yvel = object.yvel + 100*dt
       elseif object.oy+object.y > object.y then

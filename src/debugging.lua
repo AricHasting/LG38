@@ -9,6 +9,8 @@ function debugging:keypressed(key, scancode, isrepeat)
   -- escape stops the game
   if key == "escape" then
       love.event.quit()
+  elseif key == "space" then
+    enemies:spawn(100, enemy.normal, 1080-400, -100)
   end
 end
 
