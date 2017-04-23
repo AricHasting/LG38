@@ -4,13 +4,13 @@ local lg = love.graphics -- bind LG
 
 function game:load(args)
   planetsheet = love.graphics.newImage("assets/planetsheet.png") -- load spriteshet into memory
-  satellitesprite = love.graphics.newImage("assets/satellite.png") -- load satellite sprite into memory
-  devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
-  score = 0
-  selectedPlanet = nil
+  img = love.graphics.newImage("assets/satellite.png")
   planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
   love.graphics.setNewFont(20)
   baseValues.loadPlanets(args) -- call after all resources
+
+  local newSat = {dir = 0, x = 100, y = 100}
+  table.insert(planet.jupiter.assoc_sats, newSat)
 end
 
 function game:update(dt)

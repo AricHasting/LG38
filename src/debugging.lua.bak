@@ -20,14 +20,8 @@ function debugging:draw()
       lg.push("all")
       lg.setColor(255,0,0,20)
       lg.circle("fill", object.x, object.y, object.gravity)
-      lg.setColor(0, 255, 0, 20)
-      lg.circle("fill", object.x, object.y, object.targetRange)
       lg.pop()
   end
 
-  lg.setFont(devgothicDebug)
   lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 10)
-  if selectedPlanet ~= nil then
-    lg.print(selectedPlanet.name, 10, 50)
-  end
 end

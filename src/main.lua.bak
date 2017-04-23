@@ -28,7 +28,6 @@ function love.update(dt)
 		game:update(dt)
 		enemies:update(dt)
 		satellites:update(dt)
-		moons:update(dt)
 	end
 
 	-- debugging
@@ -46,7 +45,6 @@ function love.draw()
 			game:draw()
 			enemies:draw()
 			satellites:draw()
-			moons:draw()
 		end
 
 		-- debugging
@@ -60,11 +58,6 @@ end
 -- when the window gets resized this function fires. Use to fix up letterboxing
 function love.resize(w, h)
   push:resize(w, h)
-end
-
--- event when a mouse button is pressed
-function love.mousepressed(x, y, button, istouch)
-	uimanager:mousepressed(x, y, button, istouch)
 end
 
 -- event when key goes down.
