@@ -6,6 +6,7 @@ require "satellites"
 require "enemies"
 require "moons"
 require "uimanager"
+require "resources"
 push = require "lib.push"
 
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!
