@@ -62,6 +62,7 @@ function baseValues:loadPlanets(arg)
 
     earth = {
       name = "Earth",
+      health = 100,
       quad = lg.newQuad(0, 1025, 1024, 1024, planetsheet:getDimensions()),
       scale = 0.078,
       r = 0,

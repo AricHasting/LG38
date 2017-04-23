@@ -7,7 +7,7 @@ function game:load(args)
   planetsheetData = love.image.newImageData("assets/planetsheet.png") -- load image data into memory
   planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
   devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
-  devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 25)
+  devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 50)
   sunGlow = lg.newImage("assets/glow.png")
   viggente = lg.newImage("assets/viggente.png")
   ringsheet = lg.newImage("assets/ringsheet.png")

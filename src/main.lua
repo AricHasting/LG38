@@ -21,6 +21,7 @@ function love.load(args)
 	game:load(args)
 	enemies:load(args)
 	satellites:load(args)
+	uimanager:load(args)
 end
 
 
@@ -50,6 +51,7 @@ function love.draw()
 			enemies:draw()
 			satellites:draw()
 			moons:draw()
+			uimanager:draw()
 		end
 
 		-- debugging
