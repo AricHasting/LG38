@@ -21,18 +21,19 @@ function enemies:update(dt)
   -- iterate through both enemy and planet table and update all enemies
   for i,objEnemy in pairs(activeEnemies) do
 
-    objEnemy.x = objEnemy.x+objEnemy.speed*dt
+    objEnemy.x = objEnemy.x + math.sin(math.rad(objEnemy.r))*dt*objEnemy.speed
+		objEnemy.y = objEnemy.y - math.cos(math.rad(objEnemy.r))*dt*objEnemy.speed
 
-    for m,objPlanet in pairs(planet) do
+
+    -- check if enemy is in orbit of any planet
+    --[[for m,objPlanet in pairs(planet) do
         if math.sqrt((objEnemy.x-objPlanet.x)^2 + (objEnemy.y-objPlanet.y)^2) <= objPlanet.gravity+512*objEnemy.scale then
-
         end
-    end
+    end]]
   end
 
-  -- manually sets everything so we can delete while running through the table
-  local i = 1
   -- manual iterator. Removing stuff from a normal one will cause everything to spaz. We dont want that.
+  local i = 1
 	while i <= #activeEnemies do
     local object = activeEnemies[i]
     --remove if offscreen. If we remove we skip iterating that frame

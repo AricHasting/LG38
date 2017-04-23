@@ -6,8 +6,8 @@ function debugging:update(dt)
 end
 
 function debugging:keypressed(key, scancode, isrepeat)
-  -- escape stops the game
-  if key == "escape" then
+  -- q stops the game
+  if key == "q" then
       love.event.quit()
   elseif key == "space" then
     enemies:spawn(100, enemy.normal, 1080-400, -100)
@@ -27,6 +27,7 @@ function debugging:draw()
 
   lg.setFont(devgothicDebug)
   lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 10)
+  lg.print("Press Q to quit", 10, 40)
   if selectedPlanet ~= nil then
     lg.print(selectedPlanet.name, 10, 50)
   end

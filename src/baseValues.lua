@@ -2,9 +2,14 @@
 baseValues = {}
 local lg = love.graphics
 
--- THIS FUNCTION IS MEANT FOR RE-CALLING
+-- THESE FUNCTIONS ARE MEANT FOR RE-CALLING
 -- DO NOT LOAD DRAWABLES! ONLY BASE VALUES
-function baseValues:loadPlanets(arg)
+function baseValues:loadGame(args)
+  debug = true
+  gamestate = "game" -- state switcher
+end
+
+function baseValues:loadPlanets(args)
   -- planets table
   planet = {
     sun = {
@@ -16,7 +21,7 @@ function baseValues:loadPlanets(arg)
       y = gameHeight-50,
       assoc_sats = {},
       assoc_moons = {},
-      gravity = 2000,
+      gravity = 0, --2000
 	    targetRange = 0,
       yvel = 0,
       oy = 0,
@@ -207,11 +212,9 @@ function baseValues:loadPlanets(arg)
       object.gravity = 1024*object.scale*1.4
 	    object.targetRange = 1024*object.scale*1.4
       object.ring = true
-      if object.ring  then
-        local x, y, w, h = object.quad:getViewport( )
-        local r, g, b, a = planetsheetData:getPixel( x+w/2, y+h/2 )
-        object.color = {r-20, g-20, b-20, a}
-      end
+      local x, y, w, h = object.quad:getViewport( )
+      local r, g, b, a = planetsheetData:getPixel( x+w/2, y+h/2 )
+      object.color = {r-20, g-20, b-20, a}
     end
   end
 end
@@ -254,4 +257,11 @@ function baseValues:loadEnemies(args)
     }
   }
   activeEnemies = {}
+
+  -- path data. Paths on which enemies will travel series of rotation triggers
+  enemyPath = {
+    top = {},
+    center = {},
+    bottom = {}
+  }
 end

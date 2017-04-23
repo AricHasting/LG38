@@ -5,6 +5,7 @@ require "angle_utils"
 require "satellites"
 require "enemies"
 require "moons"
+require "menu"
 require "uimanager"
 require "resources"
 push = require "lib.push"
@@ -14,13 +15,14 @@ local windowWidth, windowHeight = love.window.getDesktopDimensions()
 windowWidth, windowHeight = windowWidth*.7, windowHeight*.7 --make the window a bit smaller than the screen itself
 push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen = false, resizable = true}) -- start push service for letterboxing.
 
-debug = true
-gamestate = "game" -- state switcher
-
 function love.load(args)
+	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
+
+	baseValues:loadGame(args)
 	game:load(args)
 	enemies:load(args)
 	satellites:load(args)
+	menu:load(args)
 end
 
 
@@ -31,7 +33,6 @@ function love.update(dt)
 		enemies:update(dt)
 		satellites:update(dt)
 		moons:update(dt)
-		uimanager:update(dt)
 	end
 
 	-- debugging
@@ -50,6 +51,9 @@ function love.draw()
 			enemies:draw()
 			satellites:draw()
 			moons:draw()
+		end
+		if gamestate == "pause" then
+			menu:drawPause()
 		end
 
 		-- debugging
@@ -75,7 +79,11 @@ function love.keypressed(key, scancode, isrepeat)
 	if debug then
 		debugging:keypressed(key, scancode, isrepeat)
 	end
-	if key == "tab" then
-		debug = not debug
+	uimanager:keypressed(key, scancode, isrepeat)
+end
+
+function love.focus(hasFocus)
+  if not hasFocus and gamestate ~= "pause" then
+		gamestate = "pause"
 	end
 end

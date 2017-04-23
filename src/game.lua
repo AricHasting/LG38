@@ -6,14 +6,12 @@ function game:load(args)
   planetsheet = love.graphics.newImage("assets/planetsheet.png") -- load spriteshet into memory
   planetsheetData = love.image.newImageData("assets/planetsheet.png") -- load image data into memory
   planetsheet:setFilter( "linear", "linear", 16 ) -- anisoftropy
-  devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
   sunGlow = lg.newImage("assets/glow.png")
   viggente = lg.newImage("assets/viggente.png")
   ringsheet = lg.newImage("assets/ringsheet.png")
   score = 0
   selectedPlanet = nil
 
-  love.graphics.setNewFont(20)
   baseValues:loadPlanets(args) -- call after all resources
 end
 
@@ -29,6 +27,13 @@ function game:update(dt)
         object.yvel = object.yvel - 100*dt
       end
       object.oy = object.oy + object.yvel*dt
+
+      -- fix objects planets floating offscreen on focus lost by clamping velocities
+      if object.yvel >= 100 then
+        object.yvel = 100
+      elseif object.yvel <= -100 then
+        object.yvel = -100
+      end
     end
   end
 end
