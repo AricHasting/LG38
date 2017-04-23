@@ -19,8 +19,7 @@ function moons:draw()
 	for i,object in pairs(planet) do
 		-- iterate through the moons contained by each planet and draw it facing its rotation axis
     	for j, moon in pairs(object.assoc_moons) do
-    		lg.setColor(239, 239, 239)
-      		lg.circle("fill", moon.x, moon.y, 15)
+    	   lg.draw(planetsheet, moonData.quad, moon.x, moon.y, 0, moonData.scale, moonData.scale, 1024 / 2, 1024 / 2)
     	end
     end
 end

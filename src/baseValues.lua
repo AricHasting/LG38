@@ -204,6 +204,11 @@ function baseValues:loadPlanets(args)
     }
   }
 
+  moonData = {
+    quad = lg.newQuad(1025, 3075, 1024, 1024, planetsheet:getDimensions()),
+    scale = 0.03
+  }
+
   -- calculate and set self orbits. twice the radius at 120% or 1024%120 (scaled)
   -- done after we set everything since a table cant refference itself
   -- unlike the sun ones these are important for our satelites
@@ -268,6 +273,7 @@ function baseValues:loadEnemies(args)
 end
 
 function baseValues:loadStore(args)
+  -- track the player's credits and const costs for each upgrade
   store = {
     credits = 100,
     price_laser = 10,

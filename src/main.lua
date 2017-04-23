@@ -19,14 +19,18 @@ function love.load(args)
 	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory for debug
 	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 50) -- load font for top right UI
 
+	-- load both music files
 	music1 = love.audio.newSource("assets/stars.mp3", "stream")
 	music2 = love.audio.newSource("assets/rings.mp3", "stream")
 
+	-- make both music sources loop
 	music1:setLooping(true)
 	music2:setLooping(true)
 
+	-- adjust music volume to reasonable level
 	music1:setVolume(.1)
 
+	-- play the first song, looping, at 0.1 volume
 	love.audio.play(music1)
 
 	baseValues:loadGame(args)
@@ -96,6 +100,7 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.focus(hasFocus)
+  -- automatically pause the game when it loses focus
   if not hasFocus and gamestate ~= "pause" then
 		gamestate = "pause"
 	end

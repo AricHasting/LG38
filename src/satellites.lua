@@ -13,8 +13,9 @@ function satellites:update(dt)
 	for i,object in pairs(planet) do
     -- each satellite is nested within a table nested within each planet
     for j, sat in pairs(object.assoc_sats) do
-        sat.dir = sat.dir + (((math.pi * 2) / sat.speed) * dt)
+        sat.dir = sat.dir + (((math.pi * 2) / sat.speed) * dt) -- increment the satellite's angle relative to the planet
 
+        -- update the satellite's position based on its orbital position
         sat.x = object.x + angle_utils:lengthdir_x(sat.dir, object.selfOrbit)
         sat.y = object.y + angle_utils:lengthdir_y(sat.dir, object.selfOrbit)
     end
