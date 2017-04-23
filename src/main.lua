@@ -16,8 +16,18 @@ windowWidth, windowHeight = windowWidth*.7, windowHeight*.7 --make the window a 
 push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen = false, resizable = true}) -- start push service for letterboxing.
 
 function love.load(args)
-	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory
-	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 50)
+	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory for debug
+	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 50) -- load font for top right UI
+
+	music1 = love.audio.newSource("assets/stars.mp3", "stream")
+	music2 = love.audio.newSource("assets/rings.mp3", "stream")
+
+	music1:setLooping(true)
+	music2:setLooping(true)
+
+	music1:setVolume(.1)
+
+	love.audio.play(music1)
 
 	baseValues:loadGame(args)
 	game:load(args)
