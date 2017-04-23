@@ -40,6 +40,7 @@ function game:update(dt)
   end
 end
 
+local ssm = 1 -- planet scale local
 function game:draw()
   lg.push("all")
     lg.setColor(28, 28, 28)
@@ -76,20 +77,28 @@ function game:draw()
   -- draw all the planets. Nothing interesting here. Just usng the coordinates and stuff from the planets table. Offset is 1024/2 (512). Offset uses the raw (unscaled) dimensions
   -- iterate through planet table and draw all planets
   for i,object in pairs(planet) do
-    lg.draw(planetsheet, object.quad, object.x, object.y, object.r, object.scale, object.scale, 1024/2, 1024/2+object.oy) -- draw planets
+
+    -- check if planet selected. If so upscale the drawable
+    if object == selectedPlanet then
+      ssm = 1.2
+    else
+      ssm = 1
+    end
+
+    lg.draw(planetsheet, object.quad, object.x, object.y, object.r, object.scale*ssm, object.scale*ssm, 1024/2, 1024/2+object.oy) -- draw planets
 
     -- draw rings on the planets
     if object.ring then
       -- special cases for saturn and uranus
       if object == planet.saturn then
-        lg.draw(ringsheet, ring.saturn.quad, object.x, object.y-(object.oy*object.scale), math.rad(-15+object.yvel/60), object.scale, object.scale, 1000, 350/2-80)
+        lg.draw(ringsheet, ring.saturn.quad, object.x, object.y-(object.oy*object.scale), math.rad(-15+object.yvel/60), object.scale*ssm, object.scale*ssm, 1000, 350/2-80)
       elseif object == planet.uranus then
-        lg.draw(ringsheet, ring.uranus.quad, object.x, object.y-(object.oy*object.scale), math.rad(20+object.yvel/70), object.scale, object.scale, 1000, 351/2-80)
+        lg.draw(ringsheet, ring.uranus.quad, object.x, object.y-(object.oy*object.scale), math.rad(20+object.yvel/70), object.scale*ssm, object.scale*ssm, 1000, 351/2-80)
       else
         lg.push("all")
         lg.setColor(object.color)
         -- draw ring. Offsets based on the bob animation. The rotation angle is also based on it.
-        lg.draw(ringsheet, ring.normal.quad, object.x, object.y-(object.oy*object.scale), math.rad(object.yvel/60), object.scale, object.scale, 1000, 350/2-80)
+        lg.draw(ringsheet, ring.normal.quad, object.x, object.y-(object.oy*object.scale), math.rad(object.yvel/60), object.scale*ssm, object.scale*ssm, 1000, 350/2-80)
         lg.pop()
       end
     end

@@ -20,17 +20,11 @@ function uimanager:mousepressed(x, y, button, istouch)
 				-- check if within gravity area using distance between two points
 				if angle_utils:pointdist(x, y, object.x, object.y) <= object.gravity and selectedPlanet ~= object then
 					newPlanet = true
-					-- if there is already a selected planet deselect it and scale it back
-					if selectedPlanet ~= nil then
-						selectedPlanet.scale = selectedPlanet.scale/1.2
-					end
 					selectedPlanet = object -- select the planet
-					object.scale = object.scale*1.2 -- scale the planet
 					break -- break the iterator when we select
 				-- if mouse not over a planet and something is selected then deselect it
 				end
 				if newPlanet == false and selectedPlanet ~= nil then
-					selectedPlanet.scale = selectedPlanet.scale/1.2
 					selectedPlanet = nil
 				end
 			end
