@@ -28,9 +28,9 @@ function love.load(args)
 	music1:setLooping(true)
 	music2:setLooping(true)
 
-	musicSelected = music1
+	musicSelected = music2
 
-	musicSelected:setVolume(0.1)
+	musicSelected:setVolume(0)
 	love.audio.play(musicSelected)
 
 	
@@ -58,6 +58,11 @@ function love.update(dt)
 		if musicSelected:getPitch() ~= 1 then
 			musicSelected:setPitch(1)
 			musicSelected:setVolume(0.1)
+		end
+
+		-- gradually fade in
+		if musicSelected:getVolume() < 0.1 then
+			musicSelected:setVolume(musicSelected:getVolume()+dt*0.005)
 		end
 	end
 

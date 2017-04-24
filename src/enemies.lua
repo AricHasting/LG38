@@ -40,6 +40,19 @@ function enemies:update(dt)
     if angle_utils:pointdist(objEnemy.x, objEnemy.y, planet.earth.x, planet.earth.y) <= planet.earth.gravity then
       planet.earth.health = planet.earth.health-objEnemy.damage*dt
     end
+
+    -- change keyframe
+    -- TODO CHANGE KEYFRAME BASED ON SPEED
+    objEnemy.frametime = objEnemy.frametime+dt
+    if objEnemy.frametime >= 1 then
+      objEnemy.frame = objEnemy.frame+1
+      objEnemy.frametime = 0
+    end
+
+    -- loop around keyframes
+    if objEnemy.frame > 3 then
+      objEnemy.frame = 1
+    end
   end
 
   -- manual iterator. Removing stuff from a normal one will cause everything to spaz. We dont want that.
@@ -73,7 +86,7 @@ end
 
 function enemies:spawn(type, path)
   local newEnemy = {
-    quad = type.quad,
+    quads = type.quads,
     x = 0,
     y = 0, -- TOP 250; CENTER 590; BOTTOM 1000
     r = 0, -- TOP 110; CENTER 70; BOTTOM 50
@@ -82,7 +95,9 @@ function enemies:spawn(type, path)
     path = path,
     health = type.health,
     damage = type.damage,
-    score = type.score
+    score = type.score,
+    frame = 1,
+    frametime = 0
   }
   -- change spawn locations based on height
   if path == enemyPath.top then
@@ -102,7 +117,7 @@ end
 function enemies:draw()
   -- iterate through table and draw all enemies
   for i,object in pairs(activeEnemies) do
-    lg.draw(enemysheet, object.quad, object.x, object.y, math.rad(object.r), object.scale, object.scale, 1024/2, 1024/2)
+    lg.draw(enemysheet, object.quads[object.frame], object.x, object.y, math.rad(object.r), object.scale, object.scale, 1024/2, 1024/2)
 
     -- draw enemy laser
     if angle_utils:pointdist(object.x, object.y, planet.earth.x, planet.earth.y) <= planet.earth.gravity then

@@ -248,7 +248,11 @@ function baseValues:loadEnemies(args)
   -- enemy table
   enemy = {
     normal = {
-      quad = lg.newQuad(0, 0, 1024, 1024, enemysheet:getDimensions()),
+      quads = {
+        lg.newQuad(0, 0, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(1025, 0, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(2050, 0, 1024, 1024, enemysheet:getDimensions())
+      },
       health = 1,
       damage = 1,
       speed = 100,
@@ -256,27 +260,39 @@ function baseValues:loadEnemies(args)
       score = 10
     },
     medium = {
-      quad = lg.newQuad(1024, 0, 1024, 1024, enemysheet:getDimensions()),
+      quads = {
+        lg.newQuad(0, 1025, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(1025, 1025, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(2050, 1025, 1024, 1024, enemysheet:getDimensions())
+      },
       health = 1,
       damage = 1,
       speed = 200,
-      scale = 0.025,
+      scale = 0.05,
       score = 10
     },
     hard = {
-      quad = lg.newQuad(0, 1024, 1024, 1024, enemysheet:getDimensions()),
+      quads = {
+        lg.newQuad(0, 2050, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(1025, 2050, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(2050, 2050, 1024, 1024, enemysheet:getDimensions())
+      },
       health = 1,
       damage = 1,
       speed = 100,
-      scale = 0.025,
+      scale = 0.05,
       score = 10
     },
     extreme = {
-      quad = lg.newQuad(1024, 1024, 1024, 1024, enemysheet:getDimensions()),
+      quads = {
+        lg.newQuad(0, 3075, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(1025, 3075, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(2050, 3075, 1024, 1024, enemysheet:getDimensions())
+      },
       health = 1,
       damage = 1,
       speed = 100,
-      scale = 0.025,
+      scale = 0.05,
       score = 10
     }
   }

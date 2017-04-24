@@ -16,7 +16,7 @@ function debugging:keypressed(key, scancode, isrepeat)
   elseif key == "space" then
     enemies:spawn(enemy.normal, enemyPath.top)
     enemies:spawn(enemy.medium, enemyPath.center)
-    enemies:spawn(enemy.extreme, enemyPath.bottom)
+    enemies:spawn(enemy.hard, enemyPath.bottom)
   elseif key == "s" then
     waveOngoing = true
   end
