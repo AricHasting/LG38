@@ -27,6 +27,10 @@ function enemies:update(dt)
     end
     -- this path affects everyone
     self:checkPoints(enemyPath.all, objEnemy)
+
+    if angle_utils:pointdist(objEnemy.x, objEnemy.y, planet.earth.x, planet.earth.y) <= planet.earth.gravity then
+      planet.earth.health = planet.earth.health-objEnemy.damage*dt
+    end
   end
 
   -- manual iterator. Removing stuff from a normal one will cause everything to spaz. We dont want that.
@@ -59,6 +63,7 @@ function enemies:spawn(type, path)
     r = 0, -- TOP 110; CENTER 70; BOTTOM 50
     speed = type.speed,
     scale = type.scale,
+    damage = type.damage,
     path = path
   }
   -- change spawn locations based on height
@@ -80,5 +85,14 @@ function enemies:draw()
   -- iterate through table and draw all enemies
   for i,object in pairs(activeEnemies) do
     lg.draw(enemysheet, object.quad, object.x, object.y, math.rad(object.r), object.scale, object.scale, 1024/2, 1024/2)
+    
+    -- draw enemy laser
+    if angle_utils:pointdist(object.x, object.y, planet.earth.x, planet.earth.y) <= planet.earth.gravity then
+      lg.push("all")
+      lg.setLineWidth(5)
+      lg.setColor(255,255,0,100)
+      lg.line(object.x, object.y, planet.earth.x, planet.earth.y)
+      lg.pop()
+    end
   end
 end
