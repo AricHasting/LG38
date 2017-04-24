@@ -14,7 +14,7 @@ function game:load(args)
   incomingImage = lg.newImage("assets/incoming.png")
   selectedPlanet = nil
 
-  laserFireRate = 5
+  laserFireRate = 0.2
   shockFireRate = 1
 
   shockDamage = 1
