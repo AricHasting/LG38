@@ -12,7 +12,7 @@ end
 
 function resources:addSatellite(sat_planet, sat_type)
 	-- create a new satellite at the specified planet and decrement the player's credits
-	newSat = {x = 0, y = 0, dir = math.random(0, math.pi * 2), type = sat_type, speed = 6, timer = 0, firerate = 0}
+	newSat = {x = 0, y = 0, dir = math.random(0, math.pi * 2), type = sat_type, speed = 6, timer = 0, firerate = 0, nearestEnemy = nil}
 	if sat_type == "laser" then
 		newSat.firerate = laserFireRate
 		resources:withdraw(store.price_laser)

@@ -64,8 +64,9 @@ function enemies:spawn(type, path)
     speed = type.speed,
     scale = type.scale,
     path = path,
-    health = 100,
-    damage = type.damage
+    health = 1,
+    damage = type.damage,
+    score = 10
   }
   -- change spawn locations based on height
   if path == enemyPath.top then

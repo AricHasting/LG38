@@ -153,7 +153,7 @@ function baseValues:loadPlanets(args)
       x = 484,
       y = 764,
       assoc_sats = {},
-      assoc_moons = {},
+      assoc_moons = {luna = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -236,6 +236,9 @@ function baseValues:loadPlanets(args)
 
   planet.pluto.baseRange = 70
   planet.pluto.targetRange = 70
+
+  planet.venus.baseRange = 110
+  planet.venus.targetRange = 110
 end
 
 -- ENEMY BASE VALUES

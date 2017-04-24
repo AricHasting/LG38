@@ -63,6 +63,7 @@ function debugging:draw()
   end
 
   lg.setFont(devgothicDebug)
+  lg.setColor(255, 255, 255, 255)
   lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 20)
   lg.print("Press Q to quit", 10, 40)
   if selectedPlanet ~= nil then
