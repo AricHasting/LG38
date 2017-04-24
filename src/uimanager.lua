@@ -7,6 +7,13 @@ function uimanager:load( args )
 	creditIcon = lg.newImage("assets/credits.png")
 	earthIcon:setFilter("linear", "linear", 16) -- anisoftropy
 	creditIcon:setFilter("linear", "linear", 16)
+
+	healthbarShine = {
+		img = lg.newImage("assets/healthbarShine.png"),
+		x = 1920,
+		y = 0,
+		a = 255
+	}
 end
 
 function uimanager:mousepressed(x, y, button, istouch)
@@ -45,13 +52,36 @@ function uimanager:keypressed(key, scancode, isrepeat)
 	end
 end
 
+function uimanager:update(dt)
+	healthbarShine.x = healthbarShine.x-400*dt
+	if healthbarShine.x <= 400 then
+		healthbarShine.x = 1920
+		healthbarShine.a = 255
+	end
+	healthbarShine.a = healthbarShine.a - 80*dt*(100/planet.earth.health)
+end
+
 function uimanager:draw()
+	lg.push("all")
+	lg.setColor(0,0,0)
+	lg.polygon("fill", 455,58, 414,0, 1495,0, 1495,58)
+	lg.setColor(92, 133, 90,255)
+	-- health bar
+	lg.polygon("fill", 414+(1081/100*(100-planet.earth.health)),0, 455+(1081/100*(100-planet.earth.health)),58, 1495,58, 1495,0)
+	lg.setColor(255,255,255,healthbarShine.a)
+	lg.draw(healthbarShine.img, healthbarShine.x, healthbarShine.y)
 	lg.setColor(73, 104, 174, 255)
-	lg.polygon("fill", 1505, 0, 1505, 63, 1546, 104, 1919, 104, 1919, 0)
+	lg.setLineWidth(10)
+	lg.setLineJoin( "miter" )
+	lg.line(419,5, 1505,5)
+	lg.line(414,-5, 455,58)
+	lg.line(453,58, 1505,58)
+	lg.polygon("fill", 1442,0, 1546,104, 1920,104, 1920,0)
 	lg.setColor(255, 255, 255, 255)
 	lg.draw(earthIcon, 1587, 52, 0, 0.05, 0.05, 1025 / 2, 1025 / 2)
 	lg.draw(creditIcon, 1761, 52, 0, 0.05, 0.05, 1025 / 2, 1025 / 2)
 	lg.setFont(devgothicTopRight)
 	lg.print(planet.earth.health .. "%", 1629, 26)
 	lg.print(store.credits, 1775, 26)
+	lg.pop()
 end

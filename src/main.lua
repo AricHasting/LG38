@@ -48,6 +48,7 @@ function love.update(dt)
 		enemies:update(dt)
 		satellites:update(dt)
 		moons:update(dt)
+		uimanager:update(dt)
 		-- do this check to avoid calling it all the time
 		-- if gamestate game then normal speed and volume
 		if musicSelected:getPitch() ~= 1 then

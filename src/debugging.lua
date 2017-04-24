@@ -18,7 +18,7 @@ function debugging:keypressed(key, scancode, isrepeat)
     enemies:spawn(enemy.medium, enemyPath.center)
     enemies:spawn(enemy.extreme, enemyPath.bottom)
   end
-  
+
   --elseif key == "p" then
     --love.system.setClipboardText(table.tostring(pathSelected))
 
@@ -63,7 +63,7 @@ function debugging:draw()
   end
 
   lg.setFont(devgothicDebug)
-  lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 10)
+  lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 20)
   lg.print("Press Q to quit", 10, 40)
   if selectedPlanet ~= nil then
     lg.print(selectedPlanet.name, 10, 70)
