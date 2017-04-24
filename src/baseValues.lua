@@ -271,7 +271,7 @@ function baseValues:loadEnemies(args)
     },
     extreme = {
       quad = lg.newQuad(1024, 1024, 1024, 1024, enemysheet:getDimensions()),
-      health = 1,
+      health = 5,
       damage = 1,
       speed = 100,
       scale = 0.025,
