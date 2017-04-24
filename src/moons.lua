@@ -8,9 +8,9 @@ function moons:update(dt)
         -- each moon is nested within a table nested within each planet
         for j, moon in pairs(object.assoc_moons) do
             if moon.type == "lidar" then
-                object.targetRange = 1024*object.scale*1.7
+                object.targetRange = object.baseRange * 1.7
             else
-                object.targetRange = 1024*object.scale*1.4
+                object.targetRange = object.baseRange
             end
 
             moon.dir = moon.dir + (((math.pi * 2) / moon.speed) * dt)
@@ -32,7 +32,7 @@ function moons:draw()
                 lg.draw(mooncolony, moon.x, moon.y, moon.rot, moonData.scale, moonData.scale, 1491 / 2, 1491 /2)
             end
             if moon.type == "lidar" then
-
+                lg.draw(moonradar, moon.x, moon.y, moon.rot, moonData.scale, moonData.scale, 1491 / 2, 1491 /2)
             end
     	end
     end

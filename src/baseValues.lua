@@ -23,6 +23,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {},
       gravity = 0, --2000
 	    targetRange = 0,
+      baseRange = 0,
       yvel = 0,
       oy = 0,
       ring = false,
@@ -40,6 +41,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = -80,
       oy = 0,
@@ -58,6 +60,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = -100,
       oy = 0,
@@ -77,6 +80,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {luna = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "colony", speed = -10}},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = 100,
       oy = 0,
@@ -92,9 +96,10 @@ function baseValues:loadPlanets(args)
       x = 1330,
       y = 424,
       assoc_sats = {},
-      assoc_moons = {},
+      assoc_moons = {luna = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = -95,
       oy = 0,
@@ -110,9 +115,10 @@ function baseValues:loadPlanets(args)
       x = 965,
       y = 797,
       assoc_sats = {},
-      assoc_moons = {woona = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "colony", speed = -10}},
+      assoc_moons = {},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = 80,
       oy = 0,
@@ -131,6 +137,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = -90,
       oy = 0,
@@ -149,6 +156,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = 85,
       oy = 0,
@@ -167,6 +175,7 @@ function baseValues:loadPlanets(args)
       assoc_moons = {},
       gravity = 0,
       targetRange = 0,
+      baseRange = 0,
       selfOrbit = 0,
       yvel = 95,
       oy = 0,
@@ -184,7 +193,8 @@ function baseValues:loadPlanets(args)
       assoc_sats = {},
       assoc_moons = {},
       gravity = 0,
-      targetRange = 0,
+      targetRange = 700,
+      baseRange = 70,
       selfOrbit = 0,
       yvel = -80,
       oy = 0,
@@ -216,12 +226,16 @@ function baseValues:loadPlanets(args)
     if object ~= planet.sun then
       object.selfOrbit = 1024*object.scale*1.2
       object.gravity = 1024*object.scale*1.4
-	    object.targetRange = 1024*object.scale*1.4
+      object.targetRange = 1024*object.scale*1.4
+      object.baseRange = 1024*object.scale*1.4
       local x, y, w, h = object.quad:getViewport( )
       local r, g, b, a = planetsheetData:getPixel( x+w/2, y+h/2 )
       object.color = {r-20, g-20, b-20, a}
     end
   end
+
+  planet.pluto.baseRange = 70
+  planet.pluto.targetRange = 70
 end
 
 -- ENEMY BASE VALUES

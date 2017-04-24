@@ -10,8 +10,15 @@ function game:load(args)
   viggente = lg.newImage("assets/viggente.png")
   ringsheet = lg.newImage("assets/ringsheet.png")
   mooncolony = lg.newImage("assets/moon_colony_overlay.png")
-  score = 0
+  moonradar = lg.newImage("assets/moon_radar_overlay.png")
+  incomingImage = lg.newImage("assets/incoming.png")
   selectedPlanet = nil
+
+  laserFireRate = 1
+  shockFireRate = 1
+
+  shockDamage = 1
+  laserDamage = 1
 
   baseValues:loadStore(args)
   baseValues:loadPlanets(args) -- call after all resources
