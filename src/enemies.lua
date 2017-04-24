@@ -3,8 +3,17 @@ local lg = love.graphics
 
 function enemies:load(args)
   enemysheet = lg.newImage("assets/enemysheet.png") -- load assets into memory
+  explosion_particle = lg.newImage("assets/explosion_particle.png") -- load assets into memory
   baseValues:loadEnemies(args) -- call after all resources
 
+  psystemExplode = love.graphics.newParticleSystem(explosion_particle, 99999)
+	psystemExplode:setParticleLifetime(0.5, 1.5) -- Particles live at least 2s and at most 5s.
+	psystemExplode:setSizeVariation(1)
+  psystemExplode:setSizes(2.5, 3.5)
+  psystemExplode:setLinearDamping( 0, 5 )
+	psystemExplode:setLinearAcceleration(-100, -100, 100, 100) -- Random movement in all directions.
+	psystemExplode:setColors(255, 255, 255, 255, 255, 255, 255, 0) -- Fade to transparency.
+  psystemExplode:setSpin( 0, 10 )
 end
 
 function enemies:update(dt)
@@ -40,10 +49,17 @@ function enemies:update(dt)
     --remove if offscreen. If we remove we skip iterating that frame
     if object.x > gameWidth+200 or object.x <-200 or object.y > gameHeight+200 or object.y < -200 then
       table.remove(activeEnemies, i)
+    -- if health reaches 0 kill enemy and give points
+    elseif object.health <= 0 then
+      resources:deposit(object.score)
+      psystemExplode:setPosition(object.x, object.y)
+      psystemExplode:emit( 100 )
+      table.remove(activeEnemies, i)
     else
       i = i+1 -- if we don't remove we iterate
     end
   end
+  psystemExplode:update(dt)
 end
 
 function enemies:checkPoints(path, objEnemy)
@@ -64,9 +80,9 @@ function enemies:spawn(type, path)
     speed = type.speed,
     scale = type.scale,
     path = path,
-    health = 1,
+    health = type.health,
     damage = type.damage,
-    score = 10
+    score = type.score
   }
   -- change spawn locations based on height
   if path == enemyPath.top then
@@ -87,7 +103,7 @@ function enemies:draw()
   -- iterate through table and draw all enemies
   for i,object in pairs(activeEnemies) do
     lg.draw(enemysheet, object.quad, object.x, object.y, math.rad(object.r), object.scale, object.scale, 1024/2, 1024/2)
-    
+
     -- draw enemy laser
     if angle_utils:pointdist(object.x, object.y, planet.earth.x, planet.earth.y) <= planet.earth.gravity then
       lg.push("all")
@@ -97,4 +113,5 @@ function enemies:draw()
       lg.pop()
     end
   end
+  lg.draw(psystemExplode, 0, 0)
 end

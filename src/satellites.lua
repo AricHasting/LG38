@@ -3,11 +3,18 @@ satellites = {}
 lg = love.graphics
 
 function satellites:load(args)
-	satellitesheet = lg.newImage("assets/satellitesheet.png") -- load satellite sprite sheet into memory
-    laserquad = lg.newQuad(0, 0, 254, 254, satellitesheet:getDimensions())
-    shockquad = lg.newQuad(255, 0, 254, 254, satellitesheet:getDimensions())
-    resources:addSatellite(planet.uranus, "laser")
+		satellitesheet = lg.newImage("assets/satellitesheet.png") -- load satellite sprite sheet into memory
+		shockblast = lg.newImage("assets/shockblast.png")
+
+    resources:addSatellite(planet.uranus, "shock")
     resources:addSatellite(planet.venus, "laser")
+		baseValues:loadSatellites(args)
+
+		shockPulse = love.graphics.newParticleSystem(shockblast, 99999)
+		shockPulse:setParticleLifetime(0.5)
+		shockPulse:setSizeVariation(0)
+	  shockPulse:setSizes(0, 5)
+		shockPulse:setColors(255, 255, 255, 100, 255, 255, 255, 0) -- Fade to transparency.
 end
 
 function satellites:update(dt)
@@ -34,52 +41,60 @@ function satellites:update(dt)
                         else
                             sat.nearestEnemy = oEnemy
                         end
-                        if sat.type == "shock" then
-                            oEnemy.health = oEnemy.health - shockDamage
-														sat.timer = 0
-                        end
                     end
 
                     k = k + 1
                 end
-
                 if sat.nearestEnemy ~= nil and sat.type == "laser" then
 										sat.timer = sat.timer + dt
 										if sat.timer >= laserFireRate then
                     	sat.nearestEnemy.health = sat.nearestEnemy.health - laserDamage
 											sat.timer = 0
 										end
-                end
-
-                local k = 1
-                while k <= #activeEnemies do
-                    local oEnemy = activeEnemies[k]
-                    if oEnemy.health <= 0 then
-                        resources:deposit(oEnemy.score)
-                        table.remove(activeEnemies, k)
-                    else
-                        k = k + 1
-                    end
-                end
+										-- rotate towards target enemy
+										sat.r = math.rad(math.deg(angle_utils:clampdir(math.atan2(sat.nearestEnemy.x-sat.x, sat.y-sat.nearestEnemy.y))))
+										if sat.initialPos then
+											sat.initialPos = false
+										end
+								elseif sat.type == "shock" then
+									sat.timer = sat.timer+dt
+									if sat.timer >= shockFireRate then
+								  	for p,enemyInRange in pairs(activeEnemies) do
+								  		if angle_utils:pointdist(enemyInRange.x, enemyInRange.y, object.x, object.y) <= object.targetRange then
+												enemyInRange.health = enemyInRange.health - shockDamage
+											end
+								  	end
+										shockPulse:setPosition(object.x, object.y)
+										shockPulse:setSizes(0, 4*object.scale)
+										shockPulse:emit(1)
+										sat.timer = 0
+									end
+								end
+								-- if no enemy has been in sight rotate towards planet
+                if sat.initialPos then
+									sat.r = sat.dir - math.rad(90)
+								end
             end
     end
+		shockPulse:update(dt)
 end
 
 function satellites:draw()
+	lg.draw(shockPulse, 0, 0)
 	for i,object in pairs(planet) do
 		-- iterate through the satellites contained by each planet and draw it facing its rotation axis
     	for j, sat in pairs(object.assoc_sats) do
             if sat.type == "shock" then
-                lg.setColor(255, 255, 255, 255)
-      		    lg.draw(satellitesheet, shockquad, sat.x, sat.y, sat.dir - math.rad(90), 0.3, 0.3, 255/2, 175)
-            else
-                lg.setColor(255, 255, 255, 255)
-                lg.draw(satellitesheet, laserquad, sat.x, sat.y, sat.dir - math.rad(90), 0.3, 0.3, 255/2, 175)
+      		    lg.draw(satellitesheet, shockquad, sat.x, sat.y, sat.r, 0.3, 0.3, 255/2, 175)
+            elseif sat.type == "laser" then
                 if sat.nearestEnemy ~= nil then
+										lg.push("all")
                     lg.setColor(109, 207, 246, 170)
                     lg.setLineWidth(5)
                     lg.line(sat.x, sat.y, sat.nearestEnemy.x, sat.nearestEnemy.y)
+										lg.pop()
                 end
+								lg.draw(satellitesheet, laserquad, sat.x, sat.y, sat.r, 0.3, 0.3, 255/2, 175)
             end
     	end
     end

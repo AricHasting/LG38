@@ -15,6 +15,8 @@ function angle_utils:clampdir(angle)
 	while angle < 0 do
 		angle = angle + phi
 	end
+
+	return angle
 end
 
 function angle_utils:pointdist(x1, y1, x2, y2)

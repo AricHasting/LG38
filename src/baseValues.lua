@@ -219,6 +219,8 @@ function baseValues:loadPlanets(args)
     scale = 0.03
   }
 
+  selectedPlanet = nil
+
   -- calculate and set self orbits. twice the radius at 120% or 1024%120 (scaled)
   -- done after we set everything since a table cant refference itself
   -- unlike the sun ones these are important for our satelites
@@ -250,8 +252,8 @@ function baseValues:loadEnemies(args)
       health = 1,
       damage = 1,
       speed = 100,
-      scale = 0.025,
-      score = 1
+      scale = 0.05,
+      score = 10
     },
     medium = {
       quad = lg.newQuad(1024, 0, 1024, 1024, enemysheet:getDimensions()),
@@ -259,7 +261,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 200,
       scale = 0.025,
-      score = 1
+      score = 10
     },
     hard = {
       quad = lg.newQuad(0, 1024, 1024, 1024, enemysheet:getDimensions()),
@@ -267,15 +269,15 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.025,
-      score = 1
+      score = 10
     },
     extreme = {
       quad = lg.newQuad(1024, 1024, 1024, 1024, enemysheet:getDimensions()),
-      health = 5,
+      health = 1,
       damage = 1,
       speed = 100,
       scale = 0.025,
-      score = 1
+      score = 10
     }
   }
   activeEnemies = {}
@@ -300,4 +302,15 @@ function baseValues:loadStore(args)
     price_shock = 10,
     price_ring = 10
   }
+end
+
+function baseValues:loadSatellites(args)
+  laserquad = lg.newQuad(0, 0, 254, 254, satellitesheet:getDimensions())
+  shockquad = lg.newQuad(255, 0, 254, 254, satellitesheet:getDimensions())
+
+  laserFireRate = 0.1
+  shockFireRate = 2
+
+  shockDamage = 1
+  laserDamage = 1
 end
