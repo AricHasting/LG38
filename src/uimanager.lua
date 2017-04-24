@@ -43,6 +43,11 @@ function uimanager:mousepressed(x, y, button, istouch)
 		if x >= 1825 and y <= 104 then
 			gamestate = "pause"
 		end
+
+		if y >= 975 and x <= 122 then
+			waveOngoing = true
+		end
+
 	elseif gamestate == "pause" then
 		gamestate = "game"
 	end
