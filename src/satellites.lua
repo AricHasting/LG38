@@ -61,8 +61,6 @@ function satellites:update(dt)
                         k = k + 1
                     end
                 end
-            else
-                sat.nearestEnemy = nil
             end
     end
 end
