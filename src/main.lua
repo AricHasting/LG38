@@ -8,6 +8,7 @@ require "moons"
 require "menu"
 require "uimanager"
 require "resources"
+require "wavemanager"
 push = require "lib.push"
 
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!
@@ -17,7 +18,7 @@ push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen =
 
 function love.load(args)
 	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory for debug
-	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 50) -- load font for top right UI
+	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 60) -- load font for top right UI
 
 	-- load both music files
 	music1 = love.audio.newSource("assets/stars.mp3", "stream")
@@ -32,8 +33,10 @@ function love.load(args)
 	musicSelected:setVolume(0.1)
 	love.audio.play(musicSelected)
 
+	
 	baseValues:loadGame(args)
 	game:load(args)
+	wavemanager:load(args)
 	enemies:load(args)
 	satellites:load(args)
 	menu:load(args)
@@ -45,6 +48,7 @@ function love.update(dt)
 	-- only update if in game state
 	if gamestate == "game" then
 		game:update(dt)
+		wavemanager:update(dt)
 		enemies:update(dt)
 		satellites:update(dt)
 		moons:update(dt)

@@ -17,6 +17,8 @@ function debugging:keypressed(key, scancode, isrepeat)
     enemies:spawn(enemy.normal, enemyPath.top)
     enemies:spawn(enemy.medium, enemyPath.center)
     enemies:spawn(enemy.extreme, enemyPath.bottom)
+  elseif key == "s" then
+    waveOngoing = true
   end
 
   --elseif key == "p" then
