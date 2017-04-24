@@ -5,8 +5,15 @@ local lg = love.graphics
 -- THESE FUNCTIONS ARE MEANT FOR RE-CALLING
 -- DO NOT LOAD DRAWABLES! ONLY BASE VALUES
 function baseValues:loadGame(args)
-  debug = true
-  gamestate = "game" -- state switcher
+
+  musicSelected:setVolume(0.1)
+  love.audio.play(musicSelected)
+  healthbarShine = {
+    img = lg.newImage("assets/healthbarShine.png"),
+    x = 1920,
+    y = 0,
+    a = 255
+  }
 end
 
 function baseValues:loadPlanets(args)
@@ -312,6 +319,9 @@ function baseValues:loadEnemies(args)
     {normalSpawner = {spawnDelay = 2, spawnPeriod = 0.1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}}
   }
 
+  waveOngoing = false
+  wavetimer = 0
+  waveNumber = 1
 end
 
 function baseValues:loadStore(args)
@@ -337,4 +347,12 @@ function baseValues:loadSatellites(args)
 
   shockDamage = 1
   laserDamage = 1
+end
+
+function baseValues:loadAll()
+  self:loadGame()
+  self:loadPlanets()
+  self:loadEnemies()
+  self:loadSatellites()
+  self:loadStore()
 end

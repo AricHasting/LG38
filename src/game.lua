@@ -38,6 +38,10 @@ function game:update(dt)
       end
     end
   end
+
+  if planet.earth.health <= 0 then
+    gamestate = "lost"
+  end
 end
 
 local ssm = 1 -- planet scale local

@@ -10,13 +10,6 @@ function uimanager:load( args )
 	creditIcon:setFilter("linear", "linear", 16)
 	runIcon:setFilter("linear", "linear", 16)
 
-
-	healthbarShine = {
-		img = lg.newImage("assets/healthbarShine.png"),
-		x = 1920,
-		y = 0,
-		a = 255
-	}
 end
 
 function uimanager:mousepressed(x, y, button, istouch)
@@ -62,7 +55,16 @@ function uimanager:keypressed(key, scancode, isrepeat)
 			gamestate = "game"
 		elseif gamestate == "game" then
 			gamestate = "pause"
+		elseif gamestate == "lost" then
+			gamestate = "menu"
+			musicSelected = music1
+			baseValues:loadGame()
 		end
+	end
+
+	if key == "r" and gamestate == "lost" then
+		baseValues:loadAll()
+		gamestate = "game"
 	end
 end
 

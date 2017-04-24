@@ -11,6 +11,9 @@ require "resources"
 require "wavemanager"
 push = require "lib.push"
 
+debug = true
+gamestate = "game" -- state switcher
+
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!
 local windowWidth, windowHeight = love.window.getDesktopDimensions()
 windowWidth, windowHeight = windowWidth*.7, windowHeight*.7 --make the window a bit smaller than the screen itself
@@ -30,10 +33,6 @@ function love.load(args)
 
 	musicSelected = music2
 
-	musicSelected:setVolume(0)
-	love.audio.play(musicSelected)
-
-	
 	baseValues:loadGame(args)
 	game:load(args)
 	wavemanager:load(args)
@@ -66,7 +65,7 @@ function love.update(dt)
 		end
 	end
 
-	if gamestate == "pause" then
+	if gamestate == "pause" or gamestate == "lost" then
 		-- do this check to avoid calling it all the time
 		-- if gamestate game then low speed and volume
 		if musicSelected:getPitch() ~= 0.5 then
@@ -85,7 +84,7 @@ function love.draw()
 	push:start() -- start letterboxing
 
 		-- only draw if in game or pause state
-		if gamestate == "game" or gamestate == "pause" then
+		if gamestate == "game" or gamestate == "pause" or gamestate == "lost" then
 			game:draw()
 			enemies:draw()
 			satellites:draw()
@@ -94,6 +93,9 @@ function love.draw()
 		end
 		if gamestate == "pause" then
 			menu:drawPause()
+		end
+		if gamestate == "lost" then
+			menu:drawLost()
 		end
 
 		-- debugging
@@ -124,7 +126,7 @@ end
 
 function love.focus(hasFocus)
   -- automatically pause the game when it loses focus
-  if not hasFocus and gamestate ~= "pause" then
+  if not hasFocus and gamestate == "game" then
 		gamestate = "pause"
 	end
 end

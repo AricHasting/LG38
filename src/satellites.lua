@@ -6,8 +6,8 @@ function satellites:load(args)
 		satellitesheet = lg.newImage("assets/satellitesheet.png") -- load satellite sprite sheet into memory
 		shockblast = lg.newImage("assets/shockblast.png")
 
-    resources:addSatellite(planet.uranus, "shock")
-    resources:addSatellite(planet.venus, "laser")
+    --resources:addSatellite(planet.uranus, "shock")
+    --resources:addSatellite(planet.venus, "laser")
 		baseValues:loadSatellites(args)
 
 		shockPulse = love.graphics.newParticleSystem(shockblast, 99999)

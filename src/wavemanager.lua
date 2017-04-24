@@ -3,9 +3,7 @@ wavemanager = {}
 local wavetimer = 0
 
 function wavemanager:load(args)
-	waveOngoing = false
-	wavetimer = 0
-	waveNumber = 1
+	
 end
 
 function wavemanager:update(dt)
