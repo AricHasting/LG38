@@ -107,11 +107,13 @@ function uimanager:draw()
 	lg.rectangle("fill", 1855, 30, 10, 45)
 	lg.rectangle("fill", 1880, 30, 10, 45)
 
-	lg.setColor(158, 11, 15, 255)
-	lg.polygon("fill", 0, 975, 81, 975, 122, 1017, 122, 1079, 0, 1079)
+	if waveOngoing == false then
+		lg.setColor(158, 11, 15, 255)
+		lg.polygon("fill", 0, 975, 81, 975, 122, 1017, 122, 1079, 0, 1079)
 
-	lg.setColor(255, 255, 255, 255)
-	lg.draw(runIcon, 30, 1005, 0, .044, .044, 0, 0)
+		lg.setColor(255, 255, 255, 255)
+		lg.draw(runIcon, 30, 1005, 0, .044, .044, 0, 0)
+	end
 
 	lg.pop()
 end
