@@ -96,6 +96,7 @@ function love.draw()
 			satellites:draw()
 			moons:draw()
 			uimanager:draw()
+			wavemanager:draw()
 		end
 		if gamestate == "pause" then
 			menu:drawPause()
