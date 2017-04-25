@@ -6,8 +6,10 @@ local lg = love.graphics
 -- DO NOT LOAD DRAWABLES! ONLY BASE VALUES
 function baseValues:loadGame(args)
 
-  musicSelected:setVolume(0)
+  love.audio.stop()
   love.audio.play(musicSelected)
+  musicSelected:setVolume(0.1)
+
   healthbarShine = {
     img = lg.newImage("assets/healthbarShine.png"),
     x = 1920,

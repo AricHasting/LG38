@@ -69,9 +69,9 @@ function uimanager:mousepressed(x, y, button, istouch)
 
 	if gamestate == "menu" then
 		if x >= gameWidth/2-gameWidth/3/2 and x <= gameWidth/2-gameWidth/3/2+gameWidth/3 and y >=600 and y <= 800 then
-			baseValues:loadAll()
 			gamestate = "game"
 			musicSelected = music2
+			baseValues:loadAll()
     elseif x >= gameWidth/2-gameWidth/3/2 and x <= gameWidth/2-gameWidth/3/2+gameWidth/3 and y >=850 and y <= 1050 then
 			love.event.quit()
     end
@@ -95,9 +95,9 @@ function uimanager:keypressed(key, scancode, isrepeat)
 	end
 
 	if key == "r" and gamestate == "lost" then
-		baseValues:loadAll()
 		gamestate = "game"
 		musicSelected = music2
+		baseValues:loadAll()
 	end
 end
 

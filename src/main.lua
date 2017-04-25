@@ -80,11 +80,6 @@ function love.update(dt)
 		menu:updateMenu(dt)
 	end
 
-	-- gradually fade in
-	if musicSelected:getVolume() < 0.1 then
-		musicSelected:setVolume(musicSelected:getVolume()+dt*0.005)
-	end
-
 	-- debugging
 	if debug then
 		debugging:update(dt)
