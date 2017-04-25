@@ -84,7 +84,7 @@ function baseValues:loadPlanets(args)
       x = 1350,
       y = 781,
       assoc_sats = {},
-      assoc_moons = {luna = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "colony", speed = -10}},
+      assoc_moons = {{x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "colony", speed = -10}},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -103,7 +103,7 @@ function baseValues:loadPlanets(args)
       x = 1330,
       y = 424,
       assoc_sats = {},
-      assoc_moons = {luna = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
+      assoc_moons = {{x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -160,7 +160,7 @@ function baseValues:loadPlanets(args)
       x = 484,
       y = 764,
       assoc_sats = {},
-      assoc_moons = {luna = {x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
+      assoc_moons = {{x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -278,7 +278,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 10
+      score = 3
     },
     hard = {
       quads = {
@@ -291,7 +291,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 10
+      score = 5
     },
     extreme = {
       quads = {
@@ -304,7 +304,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 10
+      score = 15
     }
   }
   activeEnemies = {}
