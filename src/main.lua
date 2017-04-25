@@ -39,7 +39,6 @@ function love.load(args)
 
 	baseValues:loadGame(args)
 	game:load(args)
-	wavemanager:load(args)
 	enemies:load(args)
 	satellites:load(args)
 	menu:load(args)

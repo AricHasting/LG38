@@ -320,9 +320,10 @@ function baseValues:loadEnemies(args)
   }
 
   waves = {
-    {normalSpawner = {spawnDelay = 2, spawnPeriod = 0.1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}},
-    {normalSpawner = {spawnDelay = 2, spawnPeriod = 0.1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}},
-    {normalSpawner = {spawnDelay = 2, spawnPeriod = 0.1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}}
+    {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}},
+    {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}},
+    {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.2}, mediumSpawner = {spawnDelay = 1, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 1}},
+    {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, normalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}}
   }
 
   waveOngoing = false
