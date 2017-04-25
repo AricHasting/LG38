@@ -115,5 +115,35 @@ function uimanager:draw()
 		lg.draw(runIcon, 30, 1005, 0, .044, .044, 0, 0)
 	end
 
+	if selectedPlanet ~= nil then
+		lg.setColor(20, 72, 149, 100)
+		lg.rectangle("fill", selectedPlanet.x + 100, selectedPlanet.y - 150, 200, 300)
+
+		lg.setColor(255, 255, 255, 255)
+		lg.setLineWidth(2)
+		lg.line(selectedPlanet.x + 140, selectedPlanet.y - 80, selectedPlanet.x + 240, selectedPlanet.y - 110)
+		lg.line(selectedPlanet.x + 140, selectedPlanet.y - 80, selectedPlanet.x + 240, selectedPlanet.y - 50)
+
+
+		lg.draw(planetsheet, moonData.quad, selectedPlanet.x + 140, selectedPlanet.y - 80, 0, moonData.scale, moonData.scale, 1024 / 2, 1024 / 2)
+		lg.draw(planetsheet, moonData.quad, selectedPlanet.x + 240, selectedPlanet.y - 110, 0, moonData.scale, moonData.scale, 1024 / 2, 1024 / 2)
+		lg.draw(planetsheet, moonData.quad, selectedPlanet.x + 240, selectedPlanet.y - 50, 0, moonData.scale, moonData.scale, 1024 / 2, 1024 / 2)
+
+		lg.draw(mooncolony, selectedPlanet.x + 240, selectedPlanet.y - 110, 0, moonData.scale, moonData.scale, 1491 / 2, 1491 /2)
+		lg.draw(moonradar, selectedPlanet.x + 240, selectedPlanet.y - 50, 0, moonData.scale, moonData.scale, 1491 / 2, 1491 /2)
+
+		lg.draw(satellitesheet, laserquad, selectedPlanet.x + 200, selectedPlanet.y + 30, 0, 0.2, 0.2, 255/2, 175)
+		lg.draw(satellitesheet, shockquad, selectedPlanet.x + 200, selectedPlanet.y + 100, 0, 0.2, 0.2, 255/2, 175)
+
+		lg.setColor(0, 0, 0, 178)
+		if selectedPlanet.assoc_moons == nil or table.getn(selectedPlanet.assoc_moons) < 1 then
+			lg.rectangle("fill", selectedPlanet.x + 210, selectedPlanet.y - 140, 60, 120)
+		else
+			lg.rectangle("fill", selectedPlanet.x + 110, selectedPlanet.y - 110, 60, 60)
+		end
+
+
+	end
+
 	lg.pop()
 end

@@ -12,6 +12,8 @@ function game:load(args)
   mooncolony = lg.newImage("assets/moon_colony_overlay.png")
   moonradar = lg.newImage("assets/moon_radar_overlay.png")
   incomingImage = lg.newImage("assets/incoming.png")
+  satellitesheet = lg.newImage("assets/satellitesheet.png") -- load satellite sprite sheet into memory
+  shockblast = lg.newImage("assets/shockblast.png")
 
   baseValues:loadStore(args)
   baseValues:loadPlanets(args) -- call after all resources
