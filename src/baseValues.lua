@@ -6,7 +6,7 @@ local lg = love.graphics
 -- DO NOT LOAD DRAWABLES! ONLY BASE VALUES
 function baseValues:loadGame(args)
 
-  musicSelected:setVolume(0.1)
+  musicSelected:setVolume(0)
   love.audio.play(musicSelected)
   healthbarShine = {
     img = lg.newImage("assets/healthbarShine.png"),
@@ -258,6 +258,7 @@ function baseValues:loadEnemies(args)
       quads = {
         lg.newQuad(0, 0, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(1025, 0, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(0, 0, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 0, 1024, 1024, enemysheet:getDimensions())
       },
       health = 1,
@@ -270,11 +271,12 @@ function baseValues:loadEnemies(args)
       quads = {
         lg.newQuad(0, 1025, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(1025, 1025, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(0, 1025, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 1025, 1024, 1024, enemysheet:getDimensions())
       },
       health = 1,
       damage = 1,
-      speed = 200,
+      speed = 100,
       scale = 0.05,
       score = 10
     },
@@ -282,6 +284,7 @@ function baseValues:loadEnemies(args)
       quads = {
         lg.newQuad(0, 2050, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(1025, 2050, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(0, 2050, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 2050, 1024, 1024, enemysheet:getDimensions())
       },
       health = 1,
@@ -294,6 +297,7 @@ function baseValues:loadEnemies(args)
       quads = {
         lg.newQuad(0, 3075, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(1025, 3075, 1024, 1024, enemysheet:getDimensions()),
+        lg.newQuad(0, 3075, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 3075, 1024, 1024, enemysheet:getDimensions())
       },
       health = 1,

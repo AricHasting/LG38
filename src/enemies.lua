@@ -44,13 +44,13 @@ function enemies:update(dt)
     -- change keyframe
     -- TODO CHANGE KEYFRAME BASED ON SPEED
     objEnemy.frametime = objEnemy.frametime+dt
-    if objEnemy.frametime >= 1 then
+    if objEnemy.frametime >= 100/objEnemy.speed*0.1 then
       objEnemy.frame = objEnemy.frame+1
       objEnemy.frametime = 0
     end
 
     -- loop around keyframes
-    if objEnemy.frame > 3 then
+    if objEnemy.frame > #objEnemy.quads then
       objEnemy.frame = 1
     end
   end

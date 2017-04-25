@@ -40,6 +40,9 @@ function game:update(dt)
   end
 
   if planet.earth.health <= 0 then
+    planet.earth.scale = 0
+    psystemExplode:setPosition(planet.earth.x, planet.earth.y)
+    psystemExplode:emit(1000)
     gamestate = "lost"
   end
 end

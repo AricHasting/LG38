@@ -12,7 +12,7 @@ require "wavemanager"
 push = require "lib.push"
 
 debug = true
-gamestate = "game" -- state switcher
+gamestate = "menu" -- state switcher
 
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!
 local windowWidth, windowHeight = love.window.getDesktopDimensions()
@@ -31,7 +31,11 @@ function love.load(args)
 	music1:setLooping(true)
 	music2:setLooping(true)
 
-	musicSelected = music2
+	if gamestate == "game" then
+		musicSelected = music2
+	else
+		musicSelected = music1
+	end
 
 	baseValues:loadGame(args)
 	game:load(args)
@@ -59,10 +63,6 @@ function love.update(dt)
 			musicSelected:setVolume(0.1)
 		end
 
-		-- gradually fade in
-		if musicSelected:getVolume() < 0.1 then
-			musicSelected:setVolume(musicSelected:getVolume()+dt*0.005)
-		end
 	end
 
 	if gamestate == "pause" or gamestate == "lost" then
@@ -72,7 +72,19 @@ function love.update(dt)
 			musicSelected:setPitch(0.5)
 			musicSelected:setVolume(0.02)
 		end
+
+		psystemExplode:update(dt)
 	end
+
+	if gamestate == "menu" then
+		menu:updateMenu(dt)
+	end
+
+	-- gradually fade in
+	if musicSelected:getVolume() < 0.1 then
+		musicSelected:setVolume(musicSelected:getVolume()+dt*0.005)
+	end
+
 	-- debugging
 	if debug then
 		debugging:update(dt)
@@ -96,6 +108,10 @@ function love.draw()
 		end
 		if gamestate == "lost" then
 			menu:drawLost()
+		end
+
+		if gamestate == "menu" then
+			menu:drawMenu()
 		end
 
 		-- debugging
