@@ -17,18 +17,40 @@ function uimanager:mousepressed(x, y, button, istouch)
 	local newPlanet = false
 	-- only be able to select while game running (not paused)
 	if gamestate == "game" then
-		-- for each planet besides the sun
-		for i, object in pairs(planet) do
-			if object ~= planet.sun then
-				-- check if within gravity area using distance between two points
-				if angle_utils:pointdist(x, y, object.x, object.y) <= object.gravity and selectedPlanet ~= object then
-					newPlanet = true
-					selectedPlanet = object -- select the planet
-					break -- break the iterator when we select
-				-- if mouse not over a planet and something is selected then deselect it
+		if waveOngoing == false then
+			-- for each planet besides the sun
+			for i, object in pairs(planet) do
+				if object ~= planet.sun then
+					-- check if within gravity area using distance between two points
+					if angle_utils:pointdist(x, y, object.x, object.y) <= object.gravity and selectedPlanet ~= object then
+						newPlanet = true
+						selectedPlanet = object -- select the planet
+						break -- break the iterator when we select
+					-- if mouse not over a planet and something is selected then deselect it
+					end
+					if newPlanet == false and selectedPlanet ~= nil then
+						if x >= selectedPlanet.x + 100 and y >= selectedPlanet.y - 150 and x <= selectedPlanet.x + 300 and y <= selectedPlanet.y + 150 then
+						else
+							selectedPlanet = nil
+						end
+					end
 				end
-				if newPlanet == false and selectedPlanet ~= nil then
-					selectedPlanet = nil
+			end
+
+			if selectedPlanet ~= nil and waveOngoing == false then
+				if x >= selectedPlanet.x + 100 and y >= selectedPlanet.y - 150 and x <= selectedPlanet.x + 300 and y <= selectedPlanet.y + 150 then
+					-- we're going shopping
+					if angle_utils:pointdist(x, y, selectedPlanet.x + 140, selectedPlanet.y - 80) < 30 and (selectedPlanet.assoc_moons == {} or #selectedPlanet.assoc_moons < 1) then
+						resources:addMoon(selectedPlanet)
+					elseif angle_utils:pointdist(x, y, selectedPlanet.x + 240, selectedPlanet.y - 110) < 30 and not (selectedPlanet.assoc_moons == {} or #selectedPlanet.assoc_moons < 1) then
+						resources:setMoonType(selectedPlanet, "colony")
+					elseif angle_utils:pointdist(x, y, selectedPlanet.x + 240, selectedPlanet.y - 50) < 30 and not (selectedPlanet.assoc_moons == {} or #selectedPlanet.assoc_moons < 1) then
+						resources:setMoonType(selectedPlanet, "lidar")
+					elseif angle_utils:pointdist(x, y, selectedPlanet.x + 200, selectedPlanet.y + 30) < 30 then
+						resources:addSatellite(selectedPlanet, "laser")
+					elseif angle_utils:pointdist(x, y, selectedPlanet.x + 200, selectedPlanet.y + 100) < 30 then
+						resources:addSatellite(selectedPlanet, "shock")
+					end
 				end
 			end
 		end
@@ -115,7 +137,7 @@ function uimanager:draw()
 		lg.draw(runIcon, 30, 1005, 0, .044, .044, 0, 0)
 	end
 
-	if selectedPlanet ~= nil then
+	if selectedPlanet ~= nil and waveOngoing == false then
 		lg.setColor(20, 72, 149, 100)
 		lg.rectangle("fill", selectedPlanet.x + 100, selectedPlanet.y - 150, 200, 300)
 
@@ -136,7 +158,7 @@ function uimanager:draw()
 		lg.draw(satellitesheet, shockquad, selectedPlanet.x + 200, selectedPlanet.y + 100, 0, 0.2, 0.2, 255/2, 175)
 
 		lg.setColor(0, 0, 0, 178)
-		if selectedPlanet.assoc_moons == nil or table.getn(selectedPlanet.assoc_moons) < 1 then
+		if selectedPlanet.assoc_moons == {} or #selectedPlanet.assoc_moons < 1 then
 			lg.rectangle("fill", selectedPlanet.x + 210, selectedPlanet.y - 140, 60, 120)
 		else
 			lg.rectangle("fill", selectedPlanet.x + 110, selectedPlanet.y - 110, 60, 60)

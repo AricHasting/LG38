@@ -276,7 +276,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 200,
       scale = 0.05,
-      score = 10
+      score = 3
     },
     hard = {
       quads = {
@@ -288,7 +288,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 10
+      score = 5
     },
     extreme = {
       quads = {
@@ -300,7 +300,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 10
+      score = 15
     }
   }
   activeEnemies = {}
