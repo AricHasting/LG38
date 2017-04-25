@@ -68,13 +68,15 @@ function wavemanager:draw()
 		end
 	end
 
-	if drawTop == true then
-		love.graphics.draw(incomingImage, 0, 250, 0, 1, 1, 0, 97/2)
-	end
-	if drawBottom == true then
-		love.graphics.draw(incomingImage, 0, 1000, 0, 1, 1, 0, 97/2)
-	end
-	if drawCenter == true then
-		love.graphics.draw(incomingImage, 0, 590, 0, 1, 1, 0, 97/2)
+	if waveOngoing == false then
+		if drawTop == true then
+			love.graphics.draw(incomingImage, 0, 250, 0, 0.3, 0.3, 0, 97/2)
+		end
+		if drawBottom == true then
+			love.graphics.draw(incomingImage, 0, 1000, 0, 0.3, 0.3, 0, 97/2)
+		end
+		if drawCenter == true then
+			love.graphics.draw(incomingImage, 0, 590, 0, 0.3, 0.3, 0, 97/2)
+		end
 	end
 end
