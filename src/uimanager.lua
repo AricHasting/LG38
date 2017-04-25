@@ -149,6 +149,7 @@ function uimanager:draw()
 	end
 
 	if selectedPlanet ~= nil and waveOngoing == false then
+
 		lg.setColor(20, 72, 149, 100)
 		lg.rectangle("fill", selectedPlanet.x + 100, selectedPlanet.y - 150, 200, 300)
 
@@ -168,14 +169,20 @@ function uimanager:draw()
 		lg.draw(satellitesheet, laserquad, selectedPlanet.x + 200, selectedPlanet.y + 30, 0, 0.2, 0.2, 255/2, 175)
 		lg.draw(satellitesheet, shockquad, selectedPlanet.x + 200, selectedPlanet.y + 100, 0, 0.2, 0.2, 255/2, 175)
 
+		lg.setFont(devgothicStoreMenu)
+		lg.print(store.price_moon, selectedPlanet.x + 120, selectedPlanet.y - 65)
+		lg.print(store.price_colony, selectedPlanet.x + 220, selectedPlanet.y - 95)
+		lg.print(store.price_colony, selectedPlanet.x + 220, selectedPlanet.y - 35)
+
+		lg.print(store.price_laser, selectedPlanet.x + 180, selectedPlanet.y + 50)
+		lg.print(store.price_shock, selectedPlanet.x + 176, selectedPlanet.y + 120)
+
 		lg.setColor(0, 0, 0, 178)
 		if selectedPlanet.assoc_moons == {} or #selectedPlanet.assoc_moons < 1 then
 			lg.rectangle("fill", selectedPlanet.x + 210, selectedPlanet.y - 140, 60, 120)
 		else
 			lg.rectangle("fill", selectedPlanet.x + 110, selectedPlanet.y - 110, 60, 60)
 		end
-
-
 	end
 
 	lg.pop()

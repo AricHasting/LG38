@@ -10,7 +10,7 @@ function satellites:load(args)
 		shockPulse = love.graphics.newParticleSystem(shockblast, 99999)
 		shockPulse:setParticleLifetime(0.5)
 		shockPulse:setSizeVariation(0)
-	  shockPulse:setSizes(0, 5)
+	    shockPulse:setSizes(0, 5)
 		shockPulse:setColors(255, 255, 255, 100, 255, 255, 255, 0) -- Fade to transparency.
 end
 

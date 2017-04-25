@@ -276,7 +276,7 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 1025, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 1025, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 2,
+      health = 3,
       damage = 1,
       speed = 200,
       scale = 0.05,
@@ -289,7 +289,7 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 2050, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 2050, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 5,
+      health = 10,
       damage = 2,
       speed = 100,
       scale = 0.05,
@@ -302,7 +302,7 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 3075, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 3075, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 10,
+      health = 20,
       damage = 3,
       speed = 100,
       scale = 0.05,
@@ -319,13 +319,52 @@ function baseValues:loadEnemies(args)
     all = {{y=825.66964285714,x=1433.90625,radius=25,r=223.26429541107},{y=859.82142857143,x=1401.7633928571,radius=25,r=254.05460409908},{y=871.875,x=1359.5758928571,radius=25,r=277.1250163489},{y=865.84821428571,x=1311.3616071429,radius=25,r=307.8749836511},{y=837.72321428571,x=1275.2008928571,radius=25,r=334.65382405805},{y=799.55357142857,x=1257.1205357143,radius=25,r=6.5819446551781},{y=747.32142857143,x=1263.1473214286,radius=25,r=39.805571092265},{y=711.16071428571,x=1293.28125,radius=25,r=65.376435213836},{y=689.0625,x=1341.4955357143,radius=25,r=97.125016348902},{y=695.08928571429,x=1389.7098214286,radius=25,r=131.423665625},{y=725.22321428571,x=1423.8616071429,radius=25,r=156.37062226934},{y=757.36607142857,x=1437.9241071429,radius=25,r=180}}
   }
 
-  waves = {
+  --[[waves = {
     {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}},
     {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}},
     {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.2}, mediumSpawner = {spawnDelay = 1, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 1}},
     {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, normalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}},
     {normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, normalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, normalSpawner3 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 20, myTimer = 0, periodTimer = 0.2}},
     {hardSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 3}, extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 1, myTimer = 0, periodTimer = 3}}
+  }]]
+
+
+  waves = {
+    {
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}
+    },
+    
+    {
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}
+    },
+    
+    {
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.2}, 
+      mediumSpawner = {spawnDelay = 1, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 1}
+    },
+    
+    {
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, 
+      ormalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}
+    },
+    
+    {
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner3 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 20, myTimer = 0, periodTimer = 0.2}
+    },
+    
+    {
+      hardSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 3}, 
+      extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 1, myTimer = 0, periodTimer = 3}
+    },
+    
+    {
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 15, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 15, myTimer = 0, periodTimer = 0.2}, 
+      hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 3, myTimer = 0, periodTimer = 3},
+      mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.mediumSpawner, spawnPath = enemyPath.center, spawnCount = 4, myTimer = 0, periodTimer = 1}
+    }
   }
 
   waveOngoing = false
@@ -336,12 +375,12 @@ end
 function baseValues:loadStore(args)
   -- track the player's credits and const costs for each upgrade
   store = {
-    credits = 100,
+    credits = 170,
     price_laser = 70,
     price_moon = 40,
     price_colony = 100,
     price_lidar = 110,
-    price_shock = 120,
+    price_shock = 300,
     price_ring = 10,
     bonus_colony = 15,
     round_bonus = 100

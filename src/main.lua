@@ -22,6 +22,7 @@ push:setupScreen(gameWidth, gameHeight, windowWidth, windowHeight, {fullscreen =
 function love.load(args)
 	devgothicDebug = love.graphics.newFont("assets/devgothic.ttf", 30) -- load Dev Gothic font into memory for debug
 	devgothicTopRight = love.graphics.newFont("assets/devgothic.ttf", 60) -- load font for top right UI
+	devgothicStoreMenu = love.graphics.newFont("assets/devgothic.ttf", 15) -- load font for top right UI
 
 	-- load both music files
 	music1 = love.audio.newSource("assets/stars.mp3", "stream")
