@@ -278,9 +278,9 @@ function baseValues:loadEnemies(args)
       },
       health = 1,
       damage = 1,
-      speed = 100,
+      speed = 200,
       scale = 0.05,
-      score = 3
+      score = 20
     },
     hard = {
       quads = {
@@ -289,11 +289,11 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 2050, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 2050, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 1,
+      health = 2,
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 5
+      score = 50
     },
     extreme = {
       quads = {
@@ -302,11 +302,11 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 3075, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 3075, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 1,
+      health = 3,
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 15
+      score = 60
     }
   }
   activeEnemies = {}

@@ -11,7 +11,7 @@ require "resources"
 require "wavemanager"
 push = require "lib.push"
 
-debug = true
+debug = false
 gamestate = "menu" -- state switcher
 
 gameWidth, gameHeight = 1920, 1080 --fixed game resolution no chango amigo!
