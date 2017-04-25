@@ -333,84 +333,84 @@ function baseValues:loadEnemies(args)
     {
       normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.5}
     },
-    
+
     {
       normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.5, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 10, myTimer = 0, periodTimer = 0.2},
       mediumSpawner = {spawnDelay = 1, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 1}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2},
       ormalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 20, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 20, myTimer = 0, periodTimer = 0.2},
       normalSpawner3 = {spawnDelay = 0, spawnPeriod = 0.4, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 20, myTimer = 0, periodTimer = 0.2}
     },
-    
+
     {
-      hardSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 3}, 
+      hardSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 3},
       extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 1, myTimer = 0, periodTimer = 3}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 15, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 15, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 15, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 15, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 3, myTimer = 0, periodTimer = 3},
-      mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.mediumSpawner, spawnPath = enemyPath.center, spawnCount = 4, myTimer = 0, periodTimer = 1}
+      mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.center, spawnCount = 4, myTimer = 0, periodTimer = 1}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.top, spawnCount = 4, myTimer = 0, periodTimer = 3},
-      mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.mediumSpawner, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 1}
+      mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.center, spawnCount = 5, myTimer = 0, periodTimer = 1}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 15, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 15, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 15, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 15, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 3, myTimer = 0, periodTimer = 3},
       extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.top, spawnCount = 2, myTimer = 0, periodTimer = 3}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.center, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.center, spawnCount = 4, myTimer = 0, periodTimer = 3},
       hardSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.bottom, spawnCount = 4, myTimer = 0, periodTimer = 3},
       mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.top, spawnCount = 4, myTimer = 0, periodTimer = 1},
       extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.top, spawnCount = 3, myTimer = 0, periodTimer = 3}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.top, spawnCount = 7, myTimer = 0, periodTimer = 3},
       hardSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.bottom, spawnCount = 5, myTimer = 0, periodTimer = 3},
       mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.bottom, spawnCount = 4, myTimer = 0, periodTimer = 1},
       mediumSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.top, spawnCount = 4, myTimer = 0, periodTimer = 1},
       extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 3, myTimer = 0, periodTimer = 3}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.top, spawnCount = 7, myTimer = 0, periodTimer = 3},
       hardSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.bottom, spawnCount = 5, myTimer = 0, periodTimer = 3},
       mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.bottom, spawnCount = 4, myTimer = 0, periodTimer = 1},
       mediumSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.top, spawnCount = 4, myTimer = 0, periodTimer = 1},
       extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 3, myTimer = 0, periodTimer = 3}
     },
-    
+
     {
-      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
-      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2}, 
+      normalSpawner = {spawnDelay = 0, spawnPeriod = 3, spawnType = enemy.normal, spawnPath = enemyPath.top, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
+      normalSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.normal, spawnPath = enemyPath.bottom, spawnCount = 25, myTimer = 0, periodTimer = 0.2},
       hardSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.top, spawnCount = 9, myTimer = 0, periodTimer = 3},
       hardSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.hard, spawnPath = enemyPath.bottom, spawnCount = 8, myTimer = 0, periodTimer = 3},
       mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.bottom, spawnCount = 8, myTimer = 0, periodTimer = 1},
