@@ -416,8 +416,8 @@ function baseValues:loadEnemies(args)
       mediumSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.bottom, spawnCount = 8, myTimer = 0, periodTimer = 1},
       mediumSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.medium, spawnPath = enemyPath.top, spawnCount = 8, myTimer = 0, periodTimer = 1},
       extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.top, spawnCount = 2, myTimer = 0, periodTimer = 3},
-      extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 2, myTimer = 0, periodTimer = 3},
-      extremeSpawner = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.bottom, spawnCount = 2, myTimer = 0, periodTimer = 3}
+      extremeSpawner2 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.center, spawnCount = 2, myTimer = 0, periodTimer = 3},
+      extremeSpawner3 = {spawnDelay = 10, spawnPeriod = 1, spawnType = enemy.extreme, spawnPath = enemyPath.bottom, spawnCount = 2, myTimer = 0, periodTimer = 3}
     }
   }
 
