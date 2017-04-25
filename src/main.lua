@@ -80,9 +80,9 @@ function love.update(dt)
 	end
 
 	-- debugging
-	if debug then
+	--[[if debug then
 		debugging:update(dt)
-	end
+	end]]
 end
 
 
@@ -110,9 +110,9 @@ function love.draw()
 		end
 
 		-- debugging
-		if debug then
+		--[[if debug then
 			debugging:draw()
-		end
+		end]]
 
 	push:finish() --stop letterboxing
 end

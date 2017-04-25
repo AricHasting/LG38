@@ -34,6 +34,7 @@ function wavemanager:update(dt)
 			if allSpawned == true and #activeEnemies == 0 then
 				waveOngoing = false
 				waveNumber = waveNumber + 1
+				resources:deposit(store.round_bonus)
 
 				for i, object in pairs(planet) do
 					for j, moonObject in pairs(object.assoc_moons) do

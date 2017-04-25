@@ -86,7 +86,7 @@ function baseValues:loadPlanets(args)
       x = 1350,
       y = 781,
       assoc_sats = {},
-      assoc_moons = {{x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "colony", speed = -10}},
+      assoc_moons = {},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -105,7 +105,7 @@ function baseValues:loadPlanets(args)
       x = 1330,
       y = 424,
       assoc_sats = {},
-      assoc_moons = {{x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
+      assoc_moons = {},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -162,7 +162,7 @@ function baseValues:loadPlanets(args)
       x = 484,
       y = 764,
       assoc_sats = {},
-      assoc_moons = {{x = 0, y = 0, rot = 0, dir = math.random(0, math.pi * 2), type = "lidar", speed = -10}},
+      assoc_moons = {},
       gravity = 0,
       targetRange = 0,
       baseRange = 0,
@@ -267,7 +267,7 @@ function baseValues:loadEnemies(args)
       damage = 1,
       speed = 100,
       scale = 0.05,
-      score = 10
+      score = 5
     },
     medium = {
       quads = {
@@ -276,11 +276,11 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 1025, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 1025, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 1,
+      health = 2,
       damage = 1,
       speed = 200,
       scale = 0.05,
-      score = 20
+      score = 10
     },
     hard = {
       quads = {
@@ -289,11 +289,11 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 2050, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 2050, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 2,
-      damage = 1,
+      health = 5,
+      damage = 2,
       speed = 100,
       scale = 0.05,
-      score = 50
+      score = 30
     },
     extreme = {
       quads = {
@@ -302,11 +302,11 @@ function baseValues:loadEnemies(args)
         lg.newQuad(0, 3075, 1024, 1024, enemysheet:getDimensions()),
         lg.newQuad(2050, 3075, 1024, 1024, enemysheet:getDimensions())
       },
-      health = 3,
-      damage = 1,
+      health = 10,
+      damage = 3,
       speed = 100,
       scale = 0.05,
-      score = 60
+      score = 50
     }
   }
   activeEnemies = {}
@@ -337,13 +337,14 @@ function baseValues:loadStore(args)
   -- track the player's credits and const costs for each upgrade
   store = {
     credits = 100,
-    price_laser = 10,
-    price_moon = 10,
-    price_colony = 10,
-    price_lidar = 10,
-    price_shock = 10,
+    price_laser = 70,
+    price_moon = 40,
+    price_colony = 100,
+    price_lidar = 110,
+    price_shock = 120,
     price_ring = 10,
-    bonus_colony = 10
+    bonus_colony = 15,
+    round_bonus = 100
   }
 end
 
@@ -351,7 +352,7 @@ function baseValues:loadSatellites(args)
   laserquad = lg.newQuad(0, 0, 254, 254, satellitesheet:getDimensions())
   shockquad = lg.newQuad(255, 0, 254, 254, satellitesheet:getDimensions())
 
-  laserFireRate = 0.1
+  laserFireRate = 1
   shockFireRate = 2
 
   shockDamage = 1
