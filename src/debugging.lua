@@ -1,5 +1,6 @@
 debugging = {}
 local lg = love.graphics
+require "fixcolor"
 
 function debugging:update(dt)
 
@@ -57,15 +58,15 @@ function debugging:draw()
   -- draw planet's gravitation fields
   for i,object in pairs(planet) do
       lg.push("all")
-      lg.setColor(255,0,0,20)
+      fixcolor:setColor(255,0,0,20)
       lg.circle("fill", object.x, object.y, object.gravity)
-      lg.setColor(0, 255, 0, 20)
+      fixcolor:setColor(0, 255, 0, 20)
       lg.circle("fill", object.x, object.y, object.targetRange)
       lg.pop()
   end
 
   lg.setFont(devgothicDebug)
-  lg.setColor(255, 255, 255, 255)
+  fixcolor:setColor(255, 255, 255, 255)
   lg.print("DEBUGGING MODE (TAB TOGGLE)", 10, 20)
   lg.print("Press Q to quit", 10, 40)
   if selectedPlanet ~= nil then

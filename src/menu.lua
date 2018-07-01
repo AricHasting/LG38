@@ -1,5 +1,6 @@
 menu = {}
 local lg = love.graphics
+require "fixcolor"
 
 function menu:load(args)
   fontTitle = love.graphics.newFont("assets/devgothic.ttf", 100) -- load Dev Gothic font into memory
@@ -10,9 +11,9 @@ end
 
 function menu:drawPause(args)
   lg.push("all")
-  lg.setColor(0,0,0,150)
+  fixcolor:setColor(0,0,0,150)
   lg.rectangle("fill", 0, 0, gameWidth, gameHeight) -- darken the screen when we pause
-  lg.setColor(255,255,255)
+  fixcolor:setColor(255,255,255)
   lg.setFont(fontTitle)
   lg.printf("PAUSED", 0, 0, gameWidth, "center") -- center the paused text
   lg.pop()
@@ -20,9 +21,9 @@ end
 
 function menu:drawLost()
   lg.push("all")
-  lg.setColor(0,0,0,200)
+  fixcolor:setColor(0,0,0,200)
   lg.rectangle("fill", 0, 0, gameWidth, gameHeight) -- darken the screen when we pause
-  lg.setColor(255,255,255)
+  fixcolor:setColor(255,255,255)
   lg.setFont(fontTitle)
   lg.printf("You could not save the world!", 0, gameHeight/2-50, gameWidth, "center") -- center the paused text
   lg.setFont(devgothicTopRight)
@@ -64,18 +65,18 @@ end
 
 function menu:drawMenu()
   lg.push("all")
-    lg.setColor(28, 28, 28)
+    fixcolor:setColor(28, 28, 28)
     lg.rectangle("fill", 0, 0, gameWidth, gameHeight)
-    lg.setColor(255,255,255,255)
+    fixcolor:setColor(255,255,255,255)
     lg.draw(viggente, 0, 0, 0, 1, 1)
     lg.draw(planetsheet, planet.jupiter.quad, gameWidth/2, gameHeight/2, 0, 0.5, 0.5, 1024/2, 1024/2+planet.jupiter.oy)
-    lg.setColor(0, 0, 0, 0)
+    fixcolor:setColor(0, 0, 0, 0)
     lg.rectangle("fill", 0, 0, gameWidth, gameHeight)
-    lg.setColor(z1)
+    fixcolor:setColor(z1)
     lg.rectangle("fill", gameWidth/2-gameWidth/3/2, 600, gameWidth/3, 200, 100)
-    lg.setColor(z2)
+    fixcolor:setColor(z2)
     lg.rectangle("fill", gameWidth/2-gameWidth/3/2, 850, gameWidth/3, 200, 100)
-    lg.setColor(255,255,255,200)
+    fixcolor:setColor(255,255,255,200)
     lg.setFont(fontTitle)
     lg.printf("Play", 0, 650, gameWidth, "center")
     lg.printf("Quit", 0, 900, gameWidth, "center")

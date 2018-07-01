@@ -1,6 +1,7 @@
 uimanager = {}
 
 lg = love.graphics
+require "fixcolor"
 
 function uimanager:load( args )
 	earthIcon = lg.newImage("assets/earth_cutout.png")
@@ -112,14 +113,14 @@ end
 
 function uimanager:draw()
 	lg.push("all")
-	lg.setColor(0,0,0)
+	fixcolor:setColor(0,0,0)
 	lg.polygon("fill", 455,58, 414,0, 1495,0, 1495,58)
 		-- health bar
-	lg.setColor(58, 173, 70,255)
+	fixcolor:setColor(58, 173, 70,z255)
 	lg.polygon("fill", 414+(1080/100*(100-planet.earth.health)),0, 455+(1080/100*(100-planet.earth.health)),58, 1494,58, 1494,0)
-	lg.setColor(255,255,255,healthbarShine.a)
+	fixcolor:setColor(255,255,255,healthbarShine.a)
 	lg.draw(healthbarShine.img, healthbarShine.x, healthbarShine.y)
-	lg.setColor(73, 104, 174, 255)
+	fixcolor:setColor(73, 104, 174, 255)
 	lg.setLineWidth(10)
 	lg.setLineJoin( "miter" )
 
@@ -128,32 +129,32 @@ function uimanager:draw()
 	lg.line(453,58, 1505,58)
 
 	lg.polygon("fill", 1442,0, 1546,104, 1920,104, 1920,0)
-	lg.setColor(255, 255, 255, 255)
+	fixcolor:setColor(255, 255, 255, 255)
 	lg.draw(creditIcon, 1620, 52, 0, 0.05, 0.05, 1025 / 2, 1025 / 2)
 	lg.setFont(devgothicTopRight)
 	lg.print(resources:formatCredits(store.credits), 1630, 21)
 
-	lg.setColor(173, 150, 59, 255)
+	fixcolor:setColor(173, 150, 59, 255)
 	lg.rectangle("fill", 1825, 0, 95, 104)
 
-	lg.setColor(255, 255, 255, 255)
+	fixcolor:setColor(255, 255, 255, 255)
 	lg.rectangle("fill", 1855, 30, 10, 45)
 	lg.rectangle("fill", 1880, 30, 10, 45)
 
 	if waveOngoing == false then
-		lg.setColor(158, 11, 15, 255)
+		fixcolor:setColor(158, 11, 15, 255)
 		lg.polygon("fill", 0, 975, 81, 975, 122, 1017, 122, 1079, 0, 1079)
 
-		lg.setColor(255, 255, 255, 255)
+		fixcolor:setColor(255, 255, 255, 255)
 		lg.draw(runIcon, 30, 1005, 0, .044, .044, 0, 0)
 	end
 
 	if selectedPlanet ~= nil and waveOngoing == false then
 
-		lg.setColor(20, 72, 149, 100)
+		fixcolor:setColor(20, 72, 149, 100)
 		lg.rectangle("fill", selectedPlanet.x + 100, selectedPlanet.y - 150, 200, 300)
 
-		lg.setColor(255, 255, 255, 255)
+		fixcolor:setColor(255, 255, 255, 255)
 		lg.setLineWidth(2)
 		lg.line(selectedPlanet.x + 140, selectedPlanet.y - 80, selectedPlanet.x + 240, selectedPlanet.y - 110)
 		lg.line(selectedPlanet.x + 140, selectedPlanet.y - 80, selectedPlanet.x + 240, selectedPlanet.y - 50)
@@ -177,7 +178,7 @@ function uimanager:draw()
 		lg.print(store.price_laser, selectedPlanet.x + 180, selectedPlanet.y + 50)
 		lg.print(store.price_shock, selectedPlanet.x + 176, selectedPlanet.y + 120)
 
-		lg.setColor(0, 0, 0, 178)
+		fixcolor:setColor(0, 0, 0, 178)
 		if selectedPlanet.assoc_moons == {} or #selectedPlanet.assoc_moons < 1 then
 			lg.rectangle("fill", selectedPlanet.x + 210, selectedPlanet.y - 140, 60, 120)
 		else

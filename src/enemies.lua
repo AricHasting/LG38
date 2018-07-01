@@ -1,5 +1,6 @@
 enemies = {}
 local lg = love.graphics
+require "fixcolor"
 
 function enemies:load(args)
   enemysheet = lg.newImage("assets/enemysheet.png") -- load assets into memory
@@ -12,7 +13,7 @@ function enemies:load(args)
   psystemExplode:setSizes(2.5, 3.5)
   psystemExplode:setLinearDamping( 0, 5 )
 	psystemExplode:setLinearAcceleration(-100, -100, 100, 100) -- Random movement in all directions.
-	psystemExplode:setColors(255, 255, 255, 255, 255, 255, 255, 0) -- Fade to transparency.
+	psystemExplode:setColors(1, 1, 1, 1, 1, 1, 1, 0) -- Fade to transparency.
   psystemExplode:setSpin( 0, 10 )
 end
 
@@ -123,7 +124,7 @@ function enemies:draw()
     if angle_utils:pointdist(object.x, object.y, planet.earth.x, planet.earth.y) <= planet.earth.gravity then
       lg.push("all")
       lg.setLineWidth(5)
-      lg.setColor(255,255,0,100)
+      fixcolor:setColor(255,255,0,100)
       lg.line(object.x, object.y, planet.earth.x, planet.earth.y)
       lg.pop()
     end

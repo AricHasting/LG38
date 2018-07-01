@@ -1,6 +1,7 @@
 moons = {}
 
 lg = love.graphics
+require "fixcolor"
 
 function moons:update(dt)
 	-- update each moon's position
@@ -26,7 +27,7 @@ end
 function moons:draw()
 	for i,object in pairs(planet) do
 		-- iterate through the moons contained by each planet and draw it facing its rotation axis
-        lg.setColor(255, 255, 255, 255)
+        fixcolor:setColor(255, 255, 255, 255)
     	for j, moon in pairs(object.assoc_moons) do
     	    lg.draw(planetsheet, moonData.quad, moon.x, moon.y, moon.rot, moonData.scale, moonData.scale, 1024 / 2, 1024 / 2)
             if moon.type == "colony" then

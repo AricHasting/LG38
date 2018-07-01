@@ -1,6 +1,7 @@
 game = {}
 
 local lg = love.graphics -- bind LG
+require "fixcolor"
 
 function game:load(args)
   planetsheet = love.graphics.newImage("assets/planetsheet.png") -- load spriteshet into memory
@@ -52,11 +53,11 @@ end
 local ssm = 1 -- planet scale local
 function game:draw()
   lg.push("all")
-    lg.setColor(28, 28, 28)
+    fixcolor:setColor(28, 28, 28)
     lg.rectangle("fill", 0, 0, gameWidth, gameHeight)
-    lg.setColor(255,255,255,255)
+    fixcolor:setColor(255,255,255,255)
     lg.draw(viggente, 0, 0, 0, 1, 1)
-    lg.setColor(249, 158, 2, 50)
+    fixcolor:setColor(249, 158, 2, 50)
     lg.draw(sunGlow, planet.sun.x, planet.sun.y, 0, 1.5, 1.5, 1920/2, 1920/2)
     -- draw orbits for each planet
     -- table iterator. Goes through all objects
@@ -64,18 +65,18 @@ function game:draw()
       if object ~= planet.sun then
         -- sun orbits
         -- if planet selected recolor the sun
-        lg.setColor(255,255,255,20)
+        fixcolor:setColor(255,255,255,20)
         if selectedPlanet == object then
-          lg.setColor(100,255,100,50)
+          fixcolor:setColor(100,255,100,50)
         end
         love.graphics.setLineWidth( 2 )
         lg.circle("line", planet.sun.x, planet.sun.y, math.sqrt((planet.sun.x-object.x)^2 + (planet.sun.y-object.y)^2)) -- use pythagorean theorem to calculate distance
 
         -- self orbits
         -- if the planet is selected recolor the orbit
-        lg.setColor(255,255,255,50)
+        fixcolor:setColor(255,255,255,50)
         if selectedPlanet == object then
-          lg.setColor(100,255,100,50)
+          fixcolor:setColor(100,255,100,50)
         end
         love.graphics.setLineWidth( 5 )
         lg.circle("line", object.x, object.y, object.selfOrbit)
@@ -105,7 +106,7 @@ function game:draw()
         lg.draw(ringsheet, ring.uranus.quad, object.x, object.y-(object.oy*object.scale), math.rad(20+object.yvel/70), object.scale*ssm, object.scale*ssm, 1000, 351/2-80)
       else
         lg.push("all")
-        lg.setColor(object.color)
+        fixcolor:setColor(object.color)
         -- draw ring. Offsets based on the bob animation. The rotation angle is also based on it.
         lg.draw(ringsheet, ring.normal.quad, object.x, object.y-(object.oy*object.scale), math.rad(object.yvel/60), object.scale*ssm, object.scale*ssm, 1000, 350/2-80)
         lg.pop()

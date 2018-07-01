@@ -1,6 +1,7 @@
 satellites = {}
 
 lg = love.graphics
+require "fixcolor"
 
 function satellites:load(args)
 		satellitesheet = lg.newImage("assets/satellitesheet.png") -- load satellite sprite sheet into memory
@@ -86,7 +87,7 @@ function satellites:draw()
             elseif sat.type == "laser" then
                 if sat.nearestEnemy ~= nil then
 										lg.push("all")
-                    lg.setColor(109, 207, 246, 170)
+                    fixcolor:setColor(109, 207, 246, 170)
                     lg.setLineWidth(5)
                     lg.line(sat.x, sat.y, sat.nearestEnemy.x, sat.nearestEnemy.y)
 										lg.pop()
